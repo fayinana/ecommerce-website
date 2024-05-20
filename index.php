@@ -50,10 +50,163 @@
             </button>
         </form>
     </nav>
+    <!-- USER DATA -->
 
 
 
+    <!-- ERROR DISPLAY -->
 
+    <main class="main-section">
+        <!-- products -->
+        <section class="products">
+            <!-- single product -->
+            <div class="card">
+                <div class="ratio-box">
+                    <img src="./images/customer-img.jpg" class="the-img" alt="">
+                </div>
+                <div class="card-body">
+                    <div class="card-info">
+                        <span class="product-name ">coffee</span>
+                        <span class="card-price">$34</span>
+                    </div>
+                    <div class="card-buttons">
+                        <span class="add-to-fev">O</span>
+                        <span class="btn add-to-cart">add to cart</span>
+                    </div>
+                </div>
+            </div>
+            <!-- end fo single product -->
+            <!-- single product -->
+            <div class="card">
+                <div class="ratio-box">
+                    <img src="./images/customer-img.jpg" class="the-img" alt="">
+                </div>
+                <div class="card-body">
+                    <div class="card-info">
+                        <span class="product-name ">coffee</span>
+                        <span class="card-price">$34</span>
+                    </div>
+                    <div class="card-buttons">
+                        <span class="add-to-fev">O</span>
+                        <span class="btn add-to-cart">add to cart</span>
+                    </div>
+                </div>
+            </div>
+            <!-- end fo single product -->
+            <!-- single product -->
+            <div class="card">
+                <div class="ratio-box">
+                    <img src="./images/customer-img.jpg" class="the-img" alt="">
+                </div>
+                <div class="card-body">
+                    <div class="card-info">
+                        <span class="product-name ">coffee</span>
+                        <span class="card-price">$34</span>
+                    </div>
+                    <div class="card-buttons">
+                        <span class="add-to-fev">O</span>
+                        <span class="btn add-to-cart">add to cart</span>
+                    </div>
+                </div>
+            </div>
+            <!-- end fo single product -->
+            <!-- single product -->
+            <div class="card">
+                <div class="ratio-box">
+                    <img src="./images/customer-img.jpg" class="the-img" alt="">
+                </div>
+                <div class="card-body">
+                    <div class="card-info">
+                        <span class="product-name ">coffee</span>
+                        <span class="card-price">$34</span>
+                    </div>
+                    <div class="card-buttons">
+                        <span class="add-to-fev">O</span>
+                        <span class="btn add-to-cart">add to cart</span>
+                    </div>
+                </div>
+            </div>
+            <!-- end fo single product -->
+            <!-- single product -->
+            <div class="card">
+                <div class="ratio-box">
+                    <img src="./images/customer-img.jpg" class="the-img" alt="">
+                </div>
+                <div class="card-body">
+                    <div class="card-info">
+                        <span class="product-name ">coffee</span>
+                        <span class="card-price">$34</span>
+                    </div>
+                    <div class="card-buttons">
+                        <span class="add-to-fev">O</span>
+                        <span class="btn add-to-cart">add to cart</span>
+                    </div>
+                </div>
+            </div>
+            <!-- end fo single product -->
+            <!-- single product -->
+            <div class="card">
+                <div class="ratio-box">
+                    <img src="./images/customer-img.jpg" class="the-img" alt="">
+                </div>
+                <div class="card-body">
+                    <div class="card-info">
+                        <span class="product-name ">coffee</span>
+                        <span class="card-price">$34</span>
+                    </div>
+                    <div class="card-buttons">
+                        <span class="add-to-fev">O</span>
+                        <span class="btn add-to-cart">add to cart</span>
+                    </div>
+                </div>
+            </div>
+            <!-- end fo single product -->
+        </section>
+        <!--end products -->
+
+        <!-- side bar -->
+        <section class="side-bar">
+
+            <div class="profile">
+                <!-- <ul>
+                    <li class="list"><a href="">
+                            <div class="profile-card">
+                                <img class="the-img" src="./images/customer-img.jpg" alt="">
+                            </div>
+                            <p>hello gust</p>
+                        </a></li>
+                    <li class="list"><a href="">
+                            <span class="icon"></span>login/signup
+                        </a></li>
+
+                </ul> -->
+            </div>
+
+            <div class="category">
+                <h2 class="btn">category</h2>
+                <ul class="category-list">
+                    <li class="link"><a href="">category1</a></li>
+                    <li class="link"><a href="">category2</a></li>
+                    <li class="link"><a href="">category3</a></li>
+                    <li class="link"><a href="">category4</a></li>
+                    <li class="link"><a href="">category5</a></li>
+                </ul>
+            </div>
+            <div class="factory">
+                <h2 class="btn">brand</h2>
+                <ul class="category-list">
+                    <li class="link"><a href="">brand 1</a></li>
+                    <li class="link"><a href="">brand 2</a></li>
+                    <li class="link"><a href="">brand 3</a></li>
+                    <li class="link"><a href="">brand 4</a></li>
+                    <li class="link"><a href="">brand 5</a></li>
+                </ul>
+            </div>
+
+        </section>
+        <!-- end of side bar -->
+
+    </main>
     <!-- footer -->
     <!-- <footer>
         <p></p>
