@@ -1,3 +1,11 @@
+<?php 
+include('./config/config.php')
+
+?>
+
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -185,21 +193,37 @@
             <div class="category">
                 <h2 class="btn">category</h2>
                 <ul class="category-list">
-                    <li class="link"><a href="">category1</a></li>
-                    <li class="link"><a href="">category2</a></li>
-                    <li class="link"><a href="">category3</a></li>
-                    <li class="link"><a href="">category4</a></li>
-                    <li class="link"><a href="">category5</a></li>
+
+                    <?php 
+                $select_categories = "SELECT * FROM `categories`";
+                $result_categories = mysqli_query($con , $select_categories); 
+              
+                while(  $row_data = mysqli_fetch_assoc($result_categories)){
+                    $category_title = $row_data["category_title"]; 
+                    $category_id = $row_data["category_id"];
+ echo "<li class='link'><a href='index.php?category=$category_id'> $category_title</a></li>";
+                   
+                }
+            
+                ?>
+
                 </ul>
             </div>
             <div class="factory">
                 <h2 class="btn">brand</h2>
                 <ul class="category-list">
-                    <li class="link"><a href="">brand 1</a></li>
-                    <li class="link"><a href="">brand 2</a></li>
-                    <li class="link"><a href="">brand 3</a></li>
-                    <li class="link"><a href="">brand 4</a></li>
-                    <li class="link"><a href="">brand 5</a></li>
+
+                    <?php 
+                $select_brands = "SELECT * FROM `brands`";
+                $result_brands = mysqli_query($con , $select_brands); 
+           
+                while(  $row_data = mysqli_fetch_assoc($result_brands)){
+                    $brand_title = $row_data["brand_title"]; 
+                    $brand_id = $row_data["brand_id"];
+ echo "<li class='link'><a href='index.php?brand=$brand_id '> $brand_title</a></li>";
+                   
+                }
+                ?>
                 </ul>
             </div>
 
