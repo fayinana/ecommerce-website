@@ -28,7 +28,7 @@
 
         <aside class="admin-side-bar">
             <ul class="lists">
-                <li class="list"><a href="">insert products</a></li>
+                <li class="list"><a href="insert_product.php">insert products</a></li>
                 <li class="list"><a href="">view products</a></li>
                 <li class="list"><a href="index.php?insert-category">insert category</a></li>
                 <li class="list"><a href="">view category</a></li>
