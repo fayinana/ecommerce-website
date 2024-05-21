@@ -67,23 +67,44 @@ include('./config/config.php')
     <main class="main-section">
         <!-- products -->
         <section class="products">
-            <!-- single product -->
-            <div class="card">
-                <div class="ratio-box">
-                    <img src="./images/customer-img.jpg" class="the-img" alt="">
-                </div>
-                <div class="card-body">
-                    <div class="card-info">
-                        <span class="product-name ">coffee</span>
-                        <span class="card-price">$34</span>
-                    </div>
-                    <div class="card-buttons">
-                        <span class="add-to-fev">O</span>
-                        <span class="btn add-to-cart">add to cart</span>
-                    </div>
-                </div>
+
+            <?php 
+$select_query = "SELECT * FROM `products` order by rand()";
+$result_query = mysqli_query($con,$select_query);
+// $row = mysqli_fetch_assoc($result_query);
+// echo $row['product_title'];
+
+while ($row = mysqli_fetch_assoc($result_query)) {
+  $product_title = $row['product_title'];
+ $product_description = $row['product_discription'];
+ $product_keywords = $row['product_keywords'];
+ $product_categories = $row['category_id'];
+ $product_brands = $row['brand_id'];
+ $product_price = $row['product_price'];
+ $product_image1 = $row['product_image1'];
+
+
+echo "
+    <div class='card'>
+        <div class='ratio-box'>
+            <img src='./admin/product_images/$product_image1' class='the-img' alt='$product_title'>
+        </div>
+        <div class='card-body'>
+            <div class='card-info'>
+                <span class='product-name'>$product_title</span>
+                <span class='card-price'>$$product_price</span>
             </div>
-            <!-- end fo single product -->
+            <div class='card-buttons'>
+                <span class='add-to-fev'>O</span>
+                <span class='btn add-to-cart'>add to cart</span>
+            </div>
+        </div>
+    </div>";
+}
+
+?>
+
+
             <!-- single product -->
             <div class="card">
                 <div class="ratio-box">
