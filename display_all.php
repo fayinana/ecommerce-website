@@ -59,13 +59,12 @@ include('./functions/common_function.php');
             <input type="submit" value="search" class="btn" name="search_data_product">
         </form>
     </nav>
+    <!-- USER DATA -->
 
     <?php 
 
 cart()
 ?>
-    <!-- USER DATA -->
-
 
 
     <!-- ERROR DISPLAY -->
@@ -75,11 +74,9 @@ cart()
         <section class="products">
 
             <?php 
-            getproducts();
+            get_all_products();
             get_filtered_product_category();
             get_filtered_product_brand();
-
-
 // $select_query = "SELECT * FROM `products` order by rand()";
 // $result_query = mysqli_query($con,$select_query);
 // // $row = mysqli_fetch_assoc($result_query);
@@ -122,7 +119,6 @@ cart()
         <section class="side-bar">
 
             <div class="profile">
-
                 <!-- <ul>
                     <li class="list"><a href="">
                             <div class="profile-card">
@@ -186,10 +182,6 @@ cart()
         <p></p>
     </footer> -->
 
-    <!-- <?php 
-                $ip = getRealIPAddr();
-                echo 'value : '.$ip;
-                ?> -->
 
     <script src="./js/script.js"></script>
 </body>

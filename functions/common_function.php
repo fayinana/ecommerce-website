@@ -19,6 +19,7 @@ $result_query = mysqli_query($con,$select_query);
 // echo $row['product_title'];
 
 while ($row = mysqli_fetch_assoc($result_query)) {
+    $product_id = $row['product_id'];
   $product_title = $row['product_title'];
  $product_description = $row['product_discription'];
  $product_keywords = $row['product_keywords'];
@@ -39,8 +40,10 @@ echo "
                 <span class='card-price'>$$product_price</span>
             </div>
             <div class='card-buttons'>
-                <span class='add-to-fev'>O</span>
-                <span class='btn add-to-cart'>add to cart</span>
+                <a  href='product_details.php?product_id=$product_id' class='btn add-to-cart'>see more</a>
+                                       <a  href='index.php?add_to_cart=$product_id' class='btn add-to-cart'>cart</a>
+
+
             </div>
         </div>
     </div>";
@@ -50,6 +53,58 @@ echo "
 
 }
 }
+
+
+function  get_all_products(){
+    
+global $con; 
+
+if(!isset($_GET['category'])){
+
+    if(!isset($_GET['brand'])){
+
+
+$select_query = "SELECT * FROM `products` order by rand()";
+$result_query = mysqli_query($con,$select_query);
+// $row = mysqli_fetch_assoc($result_query);
+// echo $row['product_title'];
+
+while ($row = mysqli_fetch_assoc($result_query)) {
+     $product_id = $row['product_id'];
+  $product_title = $row['product_title'];
+ $product_description = $row['product_discription'];
+ $product_keywords = $row['product_keywords'];
+ $product_categories = $row['category_id'];
+ $product_brands = $row['brand_id'];
+ $product_price = $row['product_price'];
+ $product_image1 = $row['product_image1'];
+
+
+echo "
+    <div class='card'>
+        <div class='ratio-box'>
+            <img src='./admin/product_images/$product_image1' class='the-img' alt='$product_title'>
+        </div>
+        <div class='card-body'>
+            <div class='card-info'>
+                <span class='product-name'>$product_title</span>
+                <span class='card-price'>$$product_price</span>
+            </div>
+            <div class='card-buttons'>
+             <a  href='product_details.php?product_id=$product_id' class='btn add-to-cart'>see more</a>
+                                        <a  href='index.php?add_to_cart=$product_id' class='btn add-to-cart'>cart</a>
+
+
+            </div>
+        </div>
+    </div>";
+}
+
+}
+
+}
+}
+
 
 
 function get_filtered_product_category(){
@@ -72,6 +127,7 @@ if($number_of_rows == 0){
 // echo $row['product_title'];
 
 while ($row = mysqli_fetch_assoc($result_query)) {
+     $product_id = $row['product_id'];
   $product_title = $row['product_title'];
  $product_description = $row['product_discription'];
  $product_keywords = $row['product_keywords'];
@@ -92,8 +148,10 @@ echo "
                 <span class='card-price'>$$product_price</span>
             </div>
             <div class='card-buttons'>
-                <span class='add-to-fev'>O</span>
-                <span class='btn add-to-cart'>add to cart</span>
+                 <a  href='product_details.php?product_id=$product_id' class='btn add-to-cart'>see more</a>
+                                    <a  href='index.php?add_to_cart=$product_id' class='btn add-to-cart'>cart</a>
+
+
             </div>
         </div>
     </div>";
@@ -124,6 +182,7 @@ if($number_of_rows == 0){
 // echo $row['product_title'];
 
 while ($row = mysqli_fetch_assoc($result_query)) {
+     $product_id = $row['product_id'];
   $product_title = $row['product_title'];
  $product_description = $row['product_discription'];
  $product_keywords = $row['product_keywords'];
@@ -144,8 +203,11 @@ echo "
                 <span class='card-price'>$$product_price</span>
             </div>
             <div class='card-buttons'>
-                <span class='add-to-fev'>O</span>
-                <span class='btn add-to-cart'>add to cart</span>
+                             <a  href='product_details.php?product_id=$product_id' class='btn add-to-cart'>see more</a>
+
+                                        <a  href='index.php?add_to_cart=$product_id' class='btn add-to-cart'>cart</a>
+
+
             </div>
         </div>
     </div>";
@@ -187,7 +249,6 @@ function get_brands(){
 
 
 
-
 function search_product(){
 
 global $con; 
@@ -204,6 +265,7 @@ if($number_of_rows == 0){
     // adding no category animation
 }
 while ($row = mysqli_fetch_assoc($result_query)) {
+     $product_id = $row['product_id'];
   $product_title = $row['product_title'];
  $product_description = $row['product_discription'];
  $product_keywords = $row['product_keywords'];
@@ -224,8 +286,10 @@ echo "
                 <span class='card-price'>$$product_price</span>
             </div>
             <div class='card-buttons'>
-                <span class='add-to-fev'>O</span>
-                <span class='btn add-to-cart'>add to cart</span>
+                              <a  href='product_details.php?product_id=$product_id' class='btn add-to-cart'>see more</a>
+                         <a  href='index.php?add_to_cart=$product_id' class='btn add-to-cart'>cart</a>
+
+
             </div>
         </div>
     </div>";
@@ -236,5 +300,94 @@ echo "
 
 
 
+function get_more_details(){
 
+global $con; 
+if(isset($_GET['product_id'])){
+
+if(!isset($_GET['category'])){
+
+    if(!isset($_GET['brand'])){
+
+$product_id = $_GET['product_id'];
+$select_query = "SELECT * FROM `products` where product_id=$product_id";
+$result_query = mysqli_query($con,$select_query);
+
+while ($row = mysqli_fetch_assoc($result_query)) {
+     $product_id = $row['product_id'];
+  $product_title = $row['product_title'];
+ $product_description = $row['product_discription'];
+ $product_keywords = $row['product_keywords'];
+ $product_categories = $row['category_id'];
+ $product_brands = $row['brand_id'];
+ $product_price = $row['product_price'];
+ $product_image1 = $row['product_image1'];
+ $product_image2 = $row['product_image2'];
+ $product_image3 = $row['product_image3'];
+
+
+echo "
+    <div class='card'>
+        <div class='ratio-box'>
+            <img src='./admin/product_images/$product_image1' class='the-img' alt='$product_title'>
+        </div>
+        <div class='card-body'>
+            <div class='card-info'>
+                <span class='product-name'>$product_title</span>
+                <span class='card-price'>$$product_price</span>
+            </div>
+            <div class='card-buttons'>
+             <a  href='product_details.php?product_id=$product_id' class='btn add-to-cart'>see more</a>
+             <a  href='index.php' class='btn add-to-cart'>back to home</a>
+               
+            </div>
+        </div>
+    </div>";
+}
+
+}
+
+}
+}
+}
+function getRealIPAddr()
+{
+  //check ip from share internet
+  if (!empty($_SERVER['HTTP_CLIENT_IP'])) {
+    $ip = $_SERVER['HTTP_CLIENT_IP'];
+  }
+  //to check ip is pass from proxy
+  elseif (!empty($_SERVER['HTTP_X_FORWARDED_FOR'])) {
+    $ip = $_SERVER['HTTP_X_FORWARDED_FOR'];
+  } else {
+    $ip = $_SERVER['REMOTE_ADDR'];
+  }
+
+  return $ip;
+}
+
+
+
+function cart() {
+    if (isset($_GET['add_to_cart'])) {
+        global $con;
+        $get_ip_address = getRealIPAddr();
+        $get_product_id = $_GET['add_to_cart'];
+        $select_query = "SELECT * FROM `cart` WHERE ip_address='$get_ip_address' AND product_id=$get_product_id";
+        $result_query = mysqli_query($con, $select_query);
+
+        $number_of_rows = mysqli_num_rows($result_query);
+        if ($number_of_rows > 0) {
+            echo "<script>alert('Product already in the cart')</script>";
+            echo "<script>window.open('index.php','_self')</script>";
+        } else {
+            $insert_query = "INSERT INTO `cart` (product_id, ip_address, quantity) VALUES ($get_product_id, '$get_ip_address', 1)";
+            $result_query = mysqli_query($con, $insert_query);
+            echo "<script>alert('item is added to cart')</script>";
+            
+            echo "<script>window.open('index.php','_self')</script>";
+
+        }
+    }
+}
 ?>

@@ -15,6 +15,7 @@ include('./functions/common_function.php');
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>home</title>
     <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/6.4.0/css/font-awesome.min.css">
 </head>
 
 <body>
@@ -22,19 +23,19 @@ include('./functions/common_function.php');
 
     <nav>
         <button class="navigation-btn btn">
-            <i class="fas fa bars">==</i>
+            <i class="fas fa bars"></i>
         </button>
         <div class="nav-bar">
             <div class="nav-bar-header">
                 <!-- <img src="logo.svg" class="logo" alt="" /> -->
-                <p class="logo">logo</p>
+                <p class="logo"></p>
                 <button class="close-btn"><i class="fas fa-times">X</i></button>
             </div>
             <ul class="lists">
-                <li class="list"><a href="/home">
+                <li class="list"><a href="index.php">
                         <span class="icon"></span>home
                     </a></li>
-                <li class="list"><a href="">
+                <li class="list"><a href="display_all.php">
                         <span class="icon"></span>products
                     </a></li>
                 <li class="list"><a href="">
@@ -44,7 +45,7 @@ include('./functions/common_function.php');
                         <span class="icon"></span>contact
                     </a></li>
                 <li class="list"><a href="">
-                        <span class="icon"></span>cart
+                        <span class="icon"><i class="fas fa-shopping-cart"></i></span>
                     </a></li>
                 <li class="list"><a href="">
                         total price:100/-
@@ -52,7 +53,7 @@ include('./functions/common_function.php');
             </ul>
         </div>
 
-        <form action="" method="get" class="search-form">
+        <form action="search_product.php" method="get" class="search-form">
             <input type="search" class="search" placeholder="Search a product..." name="search_data">
 
 
@@ -61,11 +62,11 @@ include('./functions/common_function.php');
     </nav>
     <!-- USER DATA -->
 
+
     <?php 
 
 cart()
 ?>
-
 
     <!-- ERROR DISPLAY -->
 
@@ -74,10 +75,11 @@ cart()
         <section class="products">
 
             <?php 
-            search_product();
             // getproducts();
+            get_more_details();
             get_filtered_product_category();
             get_filtered_product_brand()
+
 
 ?>
 
@@ -89,6 +91,7 @@ cart()
 
             <div class="profile">
 
+                </ul>
             </div>
 
             <div class="category">

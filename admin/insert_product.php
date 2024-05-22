@@ -34,7 +34,7 @@ $insert_products = "INSERT INTO `products` (product_title, product_discription, 
 $result_query = mysqli_query($con,$insert_products);
 
 if($result_query){
-   echo "<script>alert(success)</script>" ;   
+   echo "<script>alert('success')</script>" ;   
 }
 
 else{
@@ -123,12 +123,6 @@ else{
                 }
                 ?>
 
-
-                <!-- <option value="">food</option>
-                <option value="">food</option>
-                <option value="">food</option>
-                <option value="">food</option>
-                <option value="">food</option> -->
             </select>
 
         </div>
