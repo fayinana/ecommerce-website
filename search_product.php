@@ -43,7 +43,7 @@ include('./functions/common_function.php');
                 <li class="list"><a href="">
                         <span class="icon"></span>contact
                     </a></li>
-                <li class="list"><a href="">
+                <li class="list"><a href="cart.php">
                         <span class="icon"></span><sup>
                             <?php 
                             cart_item();
@@ -51,7 +51,9 @@ include('./functions/common_function.php');
                         </sup>
                     </a></li>
                 <li class="list"><a href="">
-                        total price:100/-
+                        total price: <?php 
+                         total_cart_price()
+                        ?>
                     </a></li>
             </ul>
         </div>

@@ -22,9 +22,11 @@ else{
 ?>
 
 <form action="" method="post" class="form">
-    <div class="input-container">
+    <h2 class="head-title">add a category</h2>
+    <div class="underline"></div>
+    <div class="input-container single-form">
         <label for="category">Category</label>
         <input type="text" placeholder="Add category" name="cat_title">
     </div>
-    <input type="submit" name="insert_cat" value="Add category">
+    <input type="submit" name="insert_cat" value="Add category" class="btn">
 </form>

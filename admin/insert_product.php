@@ -53,15 +53,15 @@ else{
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>insert products</title>
-    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/admin.css">
 </head>
 
 <body>
 
 
 
-    <form action="" method="post" enctype="multipart/form-data">
-
+    <form action="" method="post" enctype="multipart/form-data" class="form">
+        <h2 class="head-title">insert a product</h2>
         <!-- title -->
         <div class="single-form">
             <label for="product_title">product title</label>
