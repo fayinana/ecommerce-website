@@ -1,5 +1,6 @@
 <?php 
-include('./config/config.php')
+include('./config/config.php');
+include('./functions/common_function.php');
 
 ?>
 
@@ -30,10 +31,10 @@ include('./config/config.php')
                 <button class="close-btn"><i class="fas fa-times">X</i></button>
             </div>
             <ul class="lists">
-                <li class="list"><a href="/home">
+                <li class="list"><a href="/index.php">
                         <span class="icon"></span>home
                     </a></li>
-                <li class="list"><a href="">
+                <li class="list"><a href="display_all.php">
                         <span class="icon"></span>products
                     </a></li>
                 <li class="list"><a href="">
@@ -51,11 +52,11 @@ include('./config/config.php')
             </ul>
         </div>
 
-        <form action="" class="search-form">
-            <input type="text" class="search" placeholder="Search a product...">
-            <button type="submit" class="btn search-btn"><span class="icon">0</span>
-                <span class="text">search</span>
-            </button>
+        <form action="search_product.php" method="get" class="search-form">
+            <input type="search" class="search" placeholder="Search a product..." name="search_data">
+
+
+            <input type="submit" value="search" class="btn" name="search_data_product">
         </form>
     </nav>
     <!-- USER DATA -->
@@ -69,127 +70,44 @@ include('./config/config.php')
         <section class="products">
 
             <?php 
-$select_query = "SELECT * FROM `products` order by rand()";
-$result_query = mysqli_query($con,$select_query);
-// $row = mysqli_fetch_assoc($result_query);
-// echo $row['product_title'];
+            getproducts();
+            get_filtered_product_category();
+            get_filtered_product_brand()
+// $select_query = "SELECT * FROM `products` order by rand()";
+// $result_query = mysqli_query($con,$select_query);
+// // $row = mysqli_fetch_assoc($result_query);
+// // echo $row['product_title'];
 
-while ($row = mysqli_fetch_assoc($result_query)) {
-  $product_title = $row['product_title'];
- $product_description = $row['product_discription'];
- $product_keywords = $row['product_keywords'];
- $product_categories = $row['category_id'];
- $product_brands = $row['brand_id'];
- $product_price = $row['product_price'];
- $product_image1 = $row['product_image1'];
+// while ($row = mysqli_fetch_assoc($result_query)) {
+//   $product_title = $row['product_title'];
+//  $product_description = $row['product_discription'];
+//  $product_keywords = $row['product_keywords'];
+//  $product_categories = $row['category_id'];
+//  $product_brands = $row['brand_id'];
+//  $product_price = $row['product_price'];
+//  $product_image1 = $row['product_image1'];
 
 
-echo "
-    <div class='card'>
-        <div class='ratio-box'>
-            <img src='./admin/product_images/$product_image1' class='the-img' alt='$product_title'>
-        </div>
-        <div class='card-body'>
-            <div class='card-info'>
-                <span class='product-name'>$product_title</span>
-                <span class='card-price'>$$product_price</span>
-            </div>
-            <div class='card-buttons'>
-                <span class='add-to-fev'>O</span>
-                <span class='btn add-to-cart'>add to cart</span>
-            </div>
-        </div>
-    </div>";
-}
+// echo "
+//     <div class='card'>
+//         <div class='ratio-box'>
+//             <img src='./admin/product_images/$product_image1' class='the-img' alt='$product_title'>
+//         </div>
+//         <div class='card-body'>
+//             <div class='card-info'>
+//                 <span class='product-name'>$product_title</span>
+//                 <span class='card-price'>$$product_price</span>
+//             </div>
+//             <div class='card-buttons'>
+//                 <span class='add-to-fev'>O</span>
+//                 <span class='btn add-to-cart'>add to cart</span>
+//             </div>
+//         </div>
+//     </div>";
+// }
 
 ?>
 
-
-            <!-- single product -->
-            <div class="card">
-                <div class="ratio-box">
-                    <img src="./images/customer-img.jpg" class="the-img" alt="">
-                </div>
-                <div class="card-body">
-                    <div class="card-info">
-                        <span class="product-name ">coffee</span>
-                        <span class="card-price">$34</span>
-                    </div>
-                    <div class="card-buttons">
-                        <span class="add-to-fev">O</span>
-                        <span class="btn add-to-cart">add to cart</span>
-                    </div>
-                </div>
-            </div>
-            <!-- end fo single product -->
-            <!-- single product -->
-            <div class="card">
-                <div class="ratio-box">
-                    <img src="./images/customer-img.jpg" class="the-img" alt="">
-                </div>
-                <div class="card-body">
-                    <div class="card-info">
-                        <span class="product-name ">coffee</span>
-                        <span class="card-price">$34</span>
-                    </div>
-                    <div class="card-buttons">
-                        <span class="add-to-fev">O</span>
-                        <span class="btn add-to-cart">add to cart</span>
-                    </div>
-                </div>
-            </div>
-            <!-- end fo single product -->
-            <!-- single product -->
-            <div class="card">
-                <div class="ratio-box">
-                    <img src="./images/customer-img.jpg" class="the-img" alt="">
-                </div>
-                <div class="card-body">
-                    <div class="card-info">
-                        <span class="product-name ">coffee</span>
-                        <span class="card-price">$34</span>
-                    </div>
-                    <div class="card-buttons">
-                        <span class="add-to-fev">O</span>
-                        <span class="btn add-to-cart">add to cart</span>
-                    </div>
-                </div>
-            </div>
-            <!-- end fo single product -->
-            <!-- single product -->
-            <div class="card">
-                <div class="ratio-box">
-                    <img src="./images/customer-img.jpg" class="the-img" alt="">
-                </div>
-                <div class="card-body">
-                    <div class="card-info">
-                        <span class="product-name ">coffee</span>
-                        <span class="card-price">$34</span>
-                    </div>
-                    <div class="card-buttons">
-                        <span class="add-to-fev">O</span>
-                        <span class="btn add-to-cart">add to cart</span>
-                    </div>
-                </div>
-            </div>
-            <!-- end fo single product -->
-            <!-- single product -->
-            <div class="card">
-                <div class="ratio-box">
-                    <img src="./images/customer-img.jpg" class="the-img" alt="">
-                </div>
-                <div class="card-body">
-                    <div class="card-info">
-                        <span class="product-name ">coffee</span>
-                        <span class="card-price">$34</span>
-                    </div>
-                    <div class="card-buttons">
-                        <span class="add-to-fev">O</span>
-                        <span class="btn add-to-cart">add to cart</span>
-                    </div>
-                </div>
-            </div>
-            <!-- end fo single product -->
         </section>
         <!--end products -->
 
@@ -212,38 +130,41 @@ echo "
             </div>
 
             <div class="category">
-                <h2 class="btn">category</h2>
+                <h2 class="title">category</h2>
                 <ul class="category-list">
 
                     <?php 
-                $select_categories = "SELECT * FROM `categories`";
-                $result_categories = mysqli_query($con , $select_categories); 
+                get_category()
+
+//                 $select_categories = "SELECT * FROM `categories`";
+//                 $result_categories = mysqli_query($con , $select_categories); 
               
-                while(  $row_data = mysqli_fetch_assoc($result_categories)){
-                    $category_title = $row_data["category_title"]; 
-                    $category_id = $row_data["category_id"];
- echo "<li class='link'><a href='index.php?category=$category_id'> $category_title</a></li>";
+//                 while(  $row_data = mysqli_fetch_assoc($result_categories)){
+//                     $category_title = $row_data["category_title"]; 
+//                     $category_id = $row_data["category_id"];
+//  echo "<li class='link'><a href='index.php?category=$category_id'> $category_title</a></li>";
                    
-                }
+//                 }
             
                 ?>
 
                 </ul>
             </div>
             <div class="factory">
-                <h2 class="btn">brand</h2>
+                <h2 class="title">brand</h2>
                 <ul class="category-list">
 
                     <?php 
-                $select_brands = "SELECT * FROM `brands`";
-                $result_brands = mysqli_query($con , $select_brands); 
+                    get_brands()
+//                 $select_brands = "SELECT * FROM `brands`";
+//                 $result_brands = mysqli_query($con , $select_brands); 
            
-                while(  $row_data = mysqli_fetch_assoc($result_brands)){
-                    $brand_title = $row_data["brand_title"]; 
-                    $brand_id = $row_data["brand_id"];
- echo "<li class='link'><a href='index.php?brand=$brand_id '> $brand_title</a></li>";
+//                 while(  $row_data = mysqli_fetch_assoc($result_brands)){
+//                     $brand_title = $row_data["brand_title"]; 
+//                     $brand_id = $row_data["brand_id"];
+//  echo "<li class='link'><a href='index.php?brand=$brand_id '> $brand_title</a></li>";
                    
-                }
+//                 }
                 ?>
                 </ul>
             </div>

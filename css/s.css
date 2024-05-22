@@ -1,0 +1,59 @@
+.admin-nav-bar ul {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.admin-profile {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  justify-content: space-between;
+}
+.admin-profile-card {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.admin-profile-card img {
+  width: 60px;
+  height: 60px;
+}
+
+.admin-profile p {
+  color: var(--body-bc-light);
+  margin: 0;
+  text-transform: capitalize;
+}
+
+.admin-dashboard {
+  width: 100%;
+  padding: 3rem 5rem;
+  display: flex;
+  min-height: 100vh;
+  gap: 2rem;
+}
+
+/* side bar */
+.admin-side-bar {
+  position: sticky;
+  top: 100px;
+  min-height: calc(100vh - 160px);
+  width: calc(100% - 2rem - 75%);
+}
+
+.admin-side-bar ul {
+  display: flex;
+  flex-direction: column;
+  background: var(--box-bc-dark);
+  align-self: baseline;
+  box-shadow: var(--dark-shadow);
+}
+
+.display-information {
+  min-height: 100%;
+  width: 75%;
+}

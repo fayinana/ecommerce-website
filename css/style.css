@@ -116,6 +116,18 @@ img {
   color: var(--body-bc-dark);
   cursor: pointer;
 }
+
+.title {
+  border: none;
+  padding: 0.5rem 1.25rem;
+  text-transform: capitalize;
+  background: var(--active);
+  font-weight: 500;
+  font-size: 1rem;
+  border-radius: 5px;
+  color: var(--body-bc-dark);
+  cursor: pointer;
+}
 .btn:hover {
   background: var(--active-hover);
 }
@@ -207,13 +219,29 @@ nav {
 }
 
 .list {
-  text-transform: capitalize;
-  padding: 0.5rem 1rem;
   text-align: center;
-  font-size: 0.8rem;
-  color: var(--active);
-}
 
+  color: var(--active);
+  background: var(--body-bc-dark);
+  padding: 1rem;
+  margin: 0.25rem;
+  text-transform: capitalize;
+  border-radius: 10px;
+  cursor: pointer;
+}
+.list:last-child {
+  color: var(--body-bc-dark);
+  background: var(--active);
+}
+.link {
+  color: var(--active);
+  background: var(--body-bc-dark);
+  padding: 1rem;
+  margin: 0.25rem;
+  text-transform: capitalize;
+  border-radius: 10px;
+  cursor: pointer;
+}
 .search-form {
   display: flex;
   justify-content: space-between;
@@ -374,9 +402,30 @@ nav {
     font-size: 1.2rem;
   }
 
+  /* .list {
+    text-align: center;
+
+    color: var(--active);
+    background: var(--body-bc-dark);
+    padding: 1rem;
+    margin: 0.25rem;
+    text-transform: capitalize;
+    border-radius: 10px;
+    cursor: pointer;
+  }
+  .list:last-child {
+    color: var(--body-bc-dark);
+    background: var(--active);
+  }
   .link {
     color: var(--active);
-  }
+    background: var(--body-bc-dark);
+    padding: 1rem;
+    margin: 0.25rem;
+    text-transform: capitalize;
+    border-radius: 10px;
+    cursor: pointer;
+  } */
 }
 
 /* admin */
