@@ -15,6 +15,7 @@ include('./functions/common_function.php');
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>home</title>
     <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/6.4.0/css/font-awesome.min.css">
 </head>
 
 <body>
@@ -44,7 +45,11 @@ include('./functions/common_function.php');
                         <span class="icon"></span>contact
                     </a></li>
                 <li class="list"><a href="">
-                        <span class="icon"></span>cart
+                        <span class="icon"></span><sup>
+                            <?php 
+                            cart_item();
+                            ?>
+                        </sup>
                     </a></li>
                 <li class="list"><a href="">
                         total price:100/-
