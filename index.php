@@ -1,7 +1,7 @@
 <?php 
 include('./config/config.php');
 include('./functions/common_function.php');
-
+session_start();
 ?>
 
 
@@ -73,7 +73,18 @@ cart()
 ?>
     <!-- USER DATA -->
 
+    <div class="log">
+        <?php 
+        
+        if (!isset($_SESSION['username'])) {
+            echo "<span>welcome gust</span><span><a href='./users/user_login.php'>login</a></span>";
+        }
+        else {
+            echo "<span>welcome".$_SESSION['username']."</span><span><a href='./users/logout.php'>logout</a></span>";
 
+        }
+        ?>
+    </div>
 
     <!-- ERROR DISPLAY -->
 

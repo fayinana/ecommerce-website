@@ -1,8 +1,8 @@
 <?php 
-include('./config/config.php');
-// include('./functions/common_function.php');
+include('../functions/common_function.php');
+include('../config/config.php'); 
 
-
+@session_start();
 ?>
 
 <!DOCTYPE html>
@@ -58,14 +58,17 @@ $row_count_cart=mysqli_num_rows($select_cart);
 
 if($row_count > 0){
 if (password_verify($user_password,$row_data['user_password'])) {
+    $_SESSION['username'] = $user_username;
     if($row_count == 1 and $row_count_cart==0){
+        $_SESSION['username'] = $user_username;
         echo "<script>alert('login successfully')</script>";
         echo "<script>window.open('profile.php','_self')</script>";
     }
     
     else{
+        $_SESSION['username'] = $user_username;
         echo "<script>alert('login successfully')</script>";
-        echo "<script>window.open('./users/payment.php','_self')</script>";
+        echo "<script>window.open('payment.php','_self')</script>";
     }
     
 }

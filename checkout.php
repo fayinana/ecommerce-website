@@ -1,6 +1,7 @@
 <?php 
 include('./config/config.php');
 include('./functions/common_function.php');
+session_start();
 
 ?>
 
@@ -56,6 +57,18 @@ include('./functions/common_function.php');
     </nav>
     <!-- USER DATA -->
 
+    <div class="log">
+        <?php 
+        
+        if (!isset($_SESSION['username'])) {
+            echo "<span>welcome</span><span><a href='./users/user_login.php'>login</a></span>";
+        }
+        else {
+            echo "<span>welcome</span><span><a href='logout.php'>logout</a></span>";
+
+        }
+        ?>
+    </div>
 
 
     <!-- ERROR DISPLAY -->

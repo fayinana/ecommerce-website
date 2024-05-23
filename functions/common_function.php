@@ -1,6 +1,6 @@
 <?php
 
-// include('./config/config.php'); 
+// include('../config/config.php'); 
 
 function getproducts(){
 global $con; 
@@ -319,4 +319,8 @@ function total_cart_price(){
     }
     echo$total_price;
 }
+
+
+
+
 ?>
