@@ -433,4 +433,11 @@ function total_cart_price(){
     }
     echo$total_price;
 }
+
+
+
+
+
+
+
 ?>
