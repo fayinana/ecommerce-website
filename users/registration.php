@@ -77,24 +77,35 @@ if (isset($_POST['user_register'])) {
     $user_contact = $_POST['user_contact'];
     $user_ip = getRealIPAddr();
 
-    // if ($user_password === $conform_user_password) {
+//    selection
 
-    //     echo "Registration successful!";
-    // } else {
-    //     echo "Passwords do not match.";
-    // }
+$select_query = "SELECT * FROM user WHERE username = '$user_username' OR user_email = '$user_email'";
+$result= mysqli_query($con,$select_query);
+$row_count = mysqli_num_rows($result);
 
+if ($row_count > 0) {
+    echo "<script>alert('user name already exist')</script>";
+}
+ else if ($user_password != $conform_user_password) {
+            echo "<script>alert('password is not match')</script>";
+
+    } 
+else{
+
+    
+    // insertion
     move_uploaded_file($user_image_tmp,"./users_image/$user_image");
     $insert_query = "INSERT INTO user (username, user_email, user_password, user_image, user_ip, user_address, user_mobile)
                 VALUES ('$user_username', '$user_email', '$user_password', '$user_image', '$user_ip', '$user_address', '$user_contact')";
 
-                $sql_execute = mysqli_query($con,$insert_query); 
+$sql_execute = mysqli_query($con,$insert_query); 
 
-                if($sql_execute){
-                    echo "<script>alert('user added successfully')</script>";
-                }
-                else{
-                  echo "<script>alert('user not added')</script>";   
-                }
+if($sql_execute){
+    echo "<script>alert('user added successfully')</script>";
+}
+else{
+    echo "<script>alert('user not added')</script>";   
+}
+}
 }
 ?>
