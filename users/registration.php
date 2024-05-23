@@ -1,10 +1,7 @@
 <?php 
-
+include('../config/config.php'); 
 include('../functions/common_function.php');
-
 ?>
-
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -18,7 +15,6 @@ include('../functions/common_function.php');
 
 <body>
     <form action="" class="form" method="post" enctype="multipart/form-data">
-
         <div class="single-form">
             <label for="name">username</label>
             <input type="text" name="user_username" id="name" placeholder="enter user name" autocomplete="off"
@@ -53,17 +49,12 @@ include('../functions/common_function.php');
             <input type="contact" name="user_contact" id="contact" placeholder="contact" autocomplete="off"
                 required="required">
         </div>
-
         <input type="submit" value="register" class="btn" name="user_register">
         <p class="recommendation">already have an account <a href="user_login.php">login</a></p>
-
     </form>
 </body>
 
 </html>
-
-
-
 
 <?php
 if (isset($_POST['user_register'])) {
@@ -72,31 +63,26 @@ if (isset($_POST['user_register'])) {
     $user_image = $_FILES['user_image']['name'];
     $user_image_tmp = $_FILES['user_image']['tmp_name'];
     $user_password = $_POST['user_password'];
+    $hash_password = password_hash($user_password,PASSWORD_DEFAULT);
     $conform_user_password = $_POST['conform_user_password'];
     $user_address = $_POST['user_address'];
     $user_contact = $_POST['user_contact'];
     $user_ip = getRealIPAddr();
-
 //    selection
-
 $select_query = "SELECT * FROM user WHERE username = '$user_username' OR user_email = '$user_email'";
 $result= mysqli_query($con,$select_query);
 $row_count = mysqli_num_rows($result);
-
 if ($row_count > 0) {
     echo "<script>alert('user name already exist')</script>";
 }
  else if ($user_password != $conform_user_password) {
             echo "<script>alert('password is not match')</script>";
-
     } 
 else{
-
-    
     // insertion
     move_uploaded_file($user_image_tmp,"./users_image/$user_image");
     $insert_query = "INSERT INTO user (username, user_email, user_password, user_image, user_ip, user_address, user_mobile)
-                VALUES ('$user_username', '$user_email', '$user_password', '$user_image', '$user_ip', '$user_address', '$user_contact')";
+                VALUES ('$user_username', '$user_email', '$hash_password', '$user_image', '$user_ip', '$user_address', '$user_contact')";
 
 $sql_execute = mysqli_query($con,$insert_query); 
 
@@ -107,5 +93,21 @@ else{
     echo "<script>alert('user not added')</script>";   
 }
 }
+
+$select_cart_items = "select ^ from 'cart' where ip_address='$user_ip'";
+$result_cart = mysqli_query($con,$select_cart_items); 
+$row_count = mysqli_num_rows($result_cart);
+if($row_count > 0){
+    $_SESSION['username'] = $user_username;
+    echo "<script>alert('you have items in cart')</script>";
+    echo "<script>window.open('checkout.php,_self')</script>";
+    
+}
+else{
+    echo "<script>window.open('index.php,_self')</script>";
+
+
+}
+
 }
 ?>

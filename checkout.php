@@ -66,7 +66,7 @@ if(!isset($_SESSION['username'])){
     include('./users/user_login.php');
 }
 else{
-    include('payment.php');
+    include('./user/payment.php');
 }
 ?>
     </main>
