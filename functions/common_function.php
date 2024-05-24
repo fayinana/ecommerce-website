@@ -242,7 +242,7 @@ echo "
             </div>
             <div class='card-buttons'>
              <a  href='product_details.php?product_id=$product_id' class='btn see-more'>see more</a>
-             <a  href='index.php' class='btn add-to-cart'>back to home</a>
+             <a  href='index.php' class='btn add-to-cart'>home</a>
             </div>
         </div>
     </div>";

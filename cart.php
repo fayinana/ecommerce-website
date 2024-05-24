@@ -35,9 +35,18 @@ cart();
                 <li class="list"><a href="display_all.php">
                         <span class="icon"></span>products
                     </a></li>
-                <li class="list"><a href="">
-                        <span class="icon"></span>
-                        register</a></li>
+                <?php 
+                     if (!isset($_SESSION['username'])) {
+          echo "<li class='list'><a href='users/registration.php'>
+                        <span class='icon'></span>
+                        register</a></li>";
+        }
+        else {
+             echo "<li class='list'><a href='users/profile.php'>
+                       my account <span class='icon'></span>
+                        </a></li>";
+        }
+                    ?>
                 <li class="list"><a href="">
                         <span class="icon"></span>contact
                     </a></li>

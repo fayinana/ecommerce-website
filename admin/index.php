@@ -1,3 +1,7 @@
+<?php 
+include('../functions/common_function.php');
+include('../config/config.php'); ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -29,7 +33,7 @@
         <aside class="admin-side-bar">
             <ul class="lists">
                 <li class="list"><a href="insert_product.php">insert products</a></li>
-                <li class="list"><a href="">view products</a></li>
+                <li class="list"><a href="index.php?view_products">view products</a></li>
                 <li class="list"><a href="index.php?insert-category">insert category</a></li>
                 <li class="list"><a href="">view category</a></li>
                 <li class="list"><a href="index.php?insert-brands">insert brands</a></li>
@@ -51,6 +55,14 @@
             if(isset($_GET['insert-brands'])){
 
                 include('insert-brands.php');
+            }
+            if(isset($_GET['view_products'])){
+
+                include('view_products.php');
+            }
+            if(isset($_GET['edit_products'])){
+
+                include('edit_products.php');
             }
             ?>
         </section>
