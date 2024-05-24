@@ -20,7 +20,6 @@ session_start();
 
 <body>
     <!--  nav bar -->
-
     <nav>
         <button class="navigation-btn btn">
             <i class="fas fa bars">==</i>
