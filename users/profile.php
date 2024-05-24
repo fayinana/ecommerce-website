@@ -123,12 +123,15 @@ cart()
 
         </section>
         <!-- end of side bar -->
-        <section class="products">
+        <section class="">
             <?php 
 
 get_user_order_detail();
 if (isset($_GET['edit_account'])) {
 include('edit_account.php');
+}
+if (isset($_GET['my_orders'])) {
+include('my_orders.php');
 }
 ?>
         </section>
