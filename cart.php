@@ -139,7 +139,7 @@ cart();
                 <p>total : <span>$total_price</span> </p>
             <a href='index.php' class='btn'>continue shopping</a>
 
-            <a href='checkout.php' class='btn'>check out</a>
+            <a href='./users/checkout.php' class='btn'>check out</a>
     </div>
 
     ";}

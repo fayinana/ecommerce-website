@@ -62,13 +62,13 @@ if (password_verify($user_password,$row_data['user_password'])) {
     if($row_count == 1 and $row_count_cart==0){
         $_SESSION['username'] = $user_username;
         echo "<script>alert('login successfully')</script>";
-        echo "<script>window.open('profile.php','_self')</script>";
+        echo "<script>window.open('./profile.php','_self')</script>";
     }
     
     else{
         $_SESSION['username'] = $user_username;
         echo "<script>alert('login successfully')</script>";
-        echo "<script>window.open('payment.php','_self')</script>";
+        echo "<script>window.open('./payment.php','_self')</script>";
     }
     
 }

@@ -38,7 +38,7 @@ session_start();
                 <li class="list"><a href="display_all.php">
                         <span class="icon"></span>products
                     </a></li>
-                <li class="list"><a href="cart.php">
+                <li class="list"><a href="users/registration.php">
                         <span class="icon"></span>
                         register</a></li>
                 <li class="list"><a href="">

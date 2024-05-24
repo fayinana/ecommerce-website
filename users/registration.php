@@ -94,13 +94,13 @@ else{
 }
 }
 
-$select_cart_items = "select ^ from 'cart' where ip_address='$user_ip'";
+$select_cart_items = "select * from `cart` where ip_address='$user_ip'";
 $result_cart = mysqli_query($con,$select_cart_items); 
 $row_count = mysqli_num_rows($result_cart);
 if($row_count > 0){
     $_SESSION['username'] = $user_username;
     echo "<script>alert('you have items in cart')</script>";
-    echo "<script>window.open('checkout.php,_self')</script>";
+    echo "<script>window.open('../checkout.php','_self')</script>";
     
 }
 else{

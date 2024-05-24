@@ -32,7 +32,7 @@ session_start();
                 <button class="close-btn"><i class="fas fa-times">X</i></button>
             </div>
             <ul class="lists">
-                <li class="list"><a href="/home">
+                <li class="list"><a href="index.php">
                         <span class="icon"></span>home
                     </a></li>
                 <li class="list"><a href="">

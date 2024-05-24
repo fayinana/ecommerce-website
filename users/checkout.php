@@ -1,6 +1,6 @@
 <?php 
-include('./config/config.php');
-include('./functions/common_function.php');
+include('../config/config.php');
+// include('../functions/common_function.php');
 session_start();
 
 ?>
@@ -15,7 +15,7 @@ session_start();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>home</title>
-    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/6.4.0/css/font-awesome.min.css">
 </head>
 
@@ -33,13 +33,13 @@ session_start();
                 <button class="close-btn"><i class="fas fa-times">X</i></button>
             </div>
             <ul class="lists">
-                <li class="list"><a href="index.php">
+                <li class="list"><a href="../index.php">
                         <span class="icon"></span>home
                     </a></li>
-                <li class="list"><a href="display_all.php">
+                <li class="list"><a href="../display_all.php">
                         <span class="icon"></span>products
                     </a></li>
-                <li class="list"><a href="cart.php">
+                <li class="list"><a href="../cart.php">
                         <span class="icon"></span>
                         register</a></li>
                 <li class="list"><a href="">
@@ -61,7 +61,7 @@ session_start();
         <?php 
         
         if (!isset($_SESSION['username'])) {
-            echo "<span>welcome</span><span><a href='./users/user_login.php'>login</a></span>";
+            echo "<span>welcome</span><span><a href='user_login.php'>login</a></span>";
         }
         else {
             echo "<span>welcome</span><span><a href='logout.php'>logout</a></span>";
@@ -76,10 +76,10 @@ session_start();
     <main class="main-section">
         <?php 
 if(!isset($_SESSION['username'])){
-    include('./users/user_login.php');
+    include('user_login.php');
 }
 else{
-    include('./user/payment.php');
+    include('payment.php');
 }
 ?>
     </main>
