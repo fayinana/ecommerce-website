@@ -24,42 +24,38 @@ $user_id = $row_fetch['user_id'];
     </thead>
 
     <tbody>
-
         <?php 
-    
     $get_order_details = "select * from `user_order` where user_id=$user_id";
-$result_order_details = mysqli_query($con,$get_order_details);
-while ($row_orders=mysqli_fetch_assoc($result_order_details)) {
-    $order_id = $row_orders['order_id'];
-    $amount_due = $row_orders['amount_due'];
-    $total_product = $row_orders['total_product'];
-    $invoice_number = $row_orders['invoice_number'];
-    $order_date = $row_orders['order_date'];
-    $order_status = $row_orders['order_status'];
-    if($order_status == 'pending'){
-        $order_status = 'incomplete';
+    $result_order_details = mysqli_query($con,$get_order_details);
+    $number= 1;
+    while ($row_orders=mysqli_fetch_assoc($result_order_details)) {
+        $order_id = $row_orders['order_id'];
+        $amount_due = $row_orders['amount_due'];
+        $total_product = $row_orders['total_product'];
+        $invoice_number = $row_orders['invoice_number'];
+        $order_date = $row_orders['order_date'];
+        $order_status = $row_orders['order_status'];
+        if($order_status == 'pending'){
+            $order_status = 'incomplete';
+        } else {
+            $order_status = 'complete';
+        }
+        echo "<tr>
+                <td>$number</td>
+                <td>$amount_due</td>
+                <td>$total_product</td>
+                <td>$invoice_number</td>
+                <td>$order_date</td>
+                <td>$order_status</td>";
+        if($order_status == 'complete'){
+            echo "<td>paid</td>";
+        } else {
+            echo "<td><a href='confirm_payment.php?order_id=$order_id'>confirm</a></td>";
+        }
+        echo "</tr>";
+        $number++;
     }
-    else{
-        $order_status = 'complete';
-    }
-echo "
-
-<tr>
-   <tr>
-    <td>$order_id</td>
-    <td>$amount_due</td>
-    <td>$total_product</td>
-    <td>$invoice_number</td>
-    <td>$order_date</td>
-    <td>$order_status</td>
-    <td><a href='confirm_payment.php'>confirm</a></td>
-</tr>
-</tr>
-";
-
-}
-    
+    echo "</table>";
 ?>
-
     </tbody>
 </table>
