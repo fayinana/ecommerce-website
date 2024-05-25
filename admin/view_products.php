@@ -43,7 +43,7 @@
             echo $rows_count;
             ?>
             </td>
-            <td><a href="index.php?edit_products">edit</a></td>
+            <td><a href="index.php?edit_products=<?php echo $product_id ?>">edit</a></td>
             <td><a href="index.php?delete_products">delete</a></td>
         </tr>
         <?php 
