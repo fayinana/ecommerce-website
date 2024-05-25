@@ -64,6 +64,10 @@ include('../config/config.php'); ?>
 
                 include('edit_products.php');
             }
+            if(isset($_GET['delete_product'])){
+
+                include('delete_product.php');
+            }
             ?>
         </section>
     </main>
