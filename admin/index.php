@@ -35,9 +35,9 @@ include('../config/config.php'); ?>
                 <li class="list"><a href="insert_product.php">insert products</a></li>
                 <li class="list"><a href="index.php?view_products">view products</a></li>
                 <li class="list"><a href="index.php?insert-category">insert category</a></li>
-                <li class="list"><a href="">view category</a></li>
+                <li class="list"><a href="index.php?view_category">view category</a></li>
                 <li class="list"><a href="index.php?insert-brands">insert brands</a></li>
-                <li class="list"><a href="">view brands</a></li>
+                <li class="list"><a href="index.php?view_brands">view brands</a></li>
                 <li class="list"><a href="">all orders</a></li>
                 <li class="list"><a href="">all payments</a></li>
                 <li class="list"><a href="">user list</a></li>
@@ -67,6 +67,30 @@ include('../config/config.php'); ?>
             if(isset($_GET['delete_product'])){
 
                 include('delete_product.php');
+            }
+            if(isset($_GET['view_category'])){
+
+                include('view_category.php');
+            }
+            if(isset($_GET['view_brands'])){
+
+                include('view_brands.php');
+            }
+            if(isset($_GET['edit_category'])){
+
+                include('edit_category.php');
+            }
+            if(isset($_GET['edit_brand'])){
+
+                include('edit_brand.php');
+            }
+            if(isset($_GET['delete_brand'])){
+
+                include('delete_brand.php');
+            }
+            if(isset($_GET['delete_category'])){
+
+                include('delete_category.php');
             }
             ?>
         </section>
