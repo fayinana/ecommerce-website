@@ -38,9 +38,9 @@ include('../config/config.php'); ?>
                 <li class="list"><a href="index.php?view_category">view category</a></li>
                 <li class="list"><a href="index.php?insert-brands">insert brands</a></li>
                 <li class="list"><a href="index.php?view_brands">view brands</a></li>
-                <li class="list"><a href="">all orders</a></li>
-                <li class="list"><a href="">all payments</a></li>
-                <li class="list"><a href="">user list</a></li>
+                <li class="list"><a href="index.php?all_orders">all orders</a></li>
+                <li class="list"><a href="index.php?all_payments">all payments</a></li>
+                <li class="list"><a href="index.php?list_users">user list</a></li>
                 <li class="list"><a href="">log out</a></li>
             </ul>
         </aside>
@@ -88,9 +88,21 @@ include('../config/config.php'); ?>
 
                 include('delete_brand.php');
             }
+            if(isset($_GET['all_orders'])){
+
+                include('all_orders.php');
+            }
             if(isset($_GET['delete_category'])){
 
-                include('delete_category.php');
+            include('delete_category.php');
+            }
+            if(isset($_GET['all_payments'])){
+
+            include('all_payments.php');
+            }
+            if(isset($_GET['list_users'])){
+
+            include('list_users.php');
             }
             ?>
         </section>
