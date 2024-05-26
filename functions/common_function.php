@@ -17,6 +17,7 @@ while ($row = mysqli_fetch_assoc($result_query)) {
     $product_brands = $row['brand_id'];
     $product_price = $row['product_price'];
     $product_image1 = $row['product_image1'];
+    
 echo "
     <div class='card'>
         <div class='ratio-box'>
@@ -27,9 +28,10 @@ echo "
                 <span class='product-name'>$product_title</span>
                 <span class='card-price'>$$product_price</span>
             </div>
+            <p class='product-description'>$product_description;</p>
             <div class='card-buttons'>
-                <a  href='product_details.php?product_id=$product_id' class='btn see-more'>see more</a>
-                <a  href='index.php?add_to_cart=$product_id' class='btn add-to-cart'>add to cart</a>
+                <a  href='product_details.php?product_id=$product_id' class='see-more'>see more</a>
+                <a  href='index.php?add_to_cart=$product_id' class='add-to-cart'>add to cart</a>
             </div>
         </div>
     </div>";
@@ -62,9 +64,10 @@ echo "
                 <span class='product-name'>$product_title</span>
                 <span class='card-price'>$$product_price</span>
             </div>
+            <p class='product-description'>$product_description;</p>
             <div class='card-buttons'>
-                <a  href='product_details.php?product_id=$product_id' class='btn see-more'>see more</a>
-                <a  href='index.php?add_to_cart=$product_id' class='btn add-to-cart'>add to cart</a>
+                <a  href='product_details.php?product_id=$product_id' class='see-more'>see more</a>
+                <a  href='index.php?add_to_cart=$product_id' class='add-to-cart'>add to cart</a>
             </div>
         </div>
     </div>";
@@ -102,9 +105,10 @@ echo "
                 <span class='product-name'>$product_title</span>
                 <span class='card-price'>$$product_price</span>
             </div>
+            <p class='product-description'>$product_description;</p>
             <div class='card-buttons'>
-                 <a  href='product_details.php?product_id=$product_id' class='btn see-more'>see more</a>
-                 <a  href='index.php?add_to_cart=$product_id' class='btn add-to-cart'>add to cart</a>
+                <a  href='product_details.php?product_id=$product_id' class='see-more'>see more</a>
+                <a  href='index.php?add_to_cart=$product_id' class='add-to-cart'>add to cart</a>
             </div>
         </div>
     </div>";
@@ -141,9 +145,10 @@ echo "
                 <span class='product-name'>$product_title</span>
                 <span class='card-price'>$$product_price</span>
             </div>
-        <div class='card-buttons'>
-            <a  href='product_details.php?product_id=$product_id' class='btn see-more'>see more</a>
-            <a  href='index.php?add_to_cart=$product_id' class='btn add-to-cart'>add to cart</a>
+            <p class='product-description'>$product_description;</p>
+            <div class='card-buttons'>
+                <a  href='product_details.php?product_id=$product_id' class='see-more'>see more</a>
+                <a  href='index.php?add_to_cart=$product_id' class='add-to-cart'>add to cart</a>
             </div>
         </div>
     </div>";
@@ -202,9 +207,10 @@ echo "
                 <span class='product-name'>$product_title</span>
                 <span class='card-price'>$$product_price</span>
             </div>
+            <p class='product-description'>$product_description;</p>
             <div class='card-buttons'>
-                <a  href='product_details.php?product_id=$product_id' class='btn see-more'>see more</a>
-                <a  href='index.php?add_to_cart=$product_id' class='btn add-to-cart'>add to cart</a>
+                <a  href='product_details.php?product_id=$product_id' class='see-more'>see more</a>
+                <a  href='index.php?add_to_cart=$product_id' class='add-to-cart'>add to cart</a>
             </div>
         </div>
     </div>";
@@ -251,6 +257,13 @@ echo "
 }
 }
 }
+
+
+
+
+
+
+
 function getRealIPAddr()
 {
  //check ip from share internet
@@ -265,6 +278,15 @@ function getRealIPAddr()
   }
   return $ip;
 }
+
+
+
+
+
+
+
+
+
 function cart() {
     if (isset($_GET['add_to_cart'])) {
         global $con;
@@ -284,6 +306,17 @@ function cart() {
         }
     }
 }
+
+
+
+
+
+
+
+
+
+
+
 function cart_item(){
     if (isset($_GET['add_to_cart'])) {
         global $con;
@@ -301,7 +334,16 @@ function cart_item(){
     }
     echo  $number_cart_items;
         }
-function total_cart_price(){
+
+
+
+
+
+
+
+
+
+        function total_cart_price(){
     global $con;
     $get_ip_address = getRealIPAddr();
     $total_price = 0;
@@ -319,6 +361,15 @@ function total_cart_price(){
     }
     echo$total_price;
 }
+
+
+
+
+
+
+
+
+
 
 function get_user_order_detail() {
     global $con;

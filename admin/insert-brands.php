@@ -22,7 +22,8 @@ else{
 ?>
 
 <form action="" method="post" class="form">
-    <h2 class="head-title">add a brand</h2>
+    <h2 class="recent-order">add brands</h2>
+
     <div class="input-container single-form">
         <label for="brands">brand</label>
         <input type="text" placeholder="Add brands" name="brand_title">

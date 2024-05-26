@@ -1,8 +1,6 @@
-<h1>users list</h1>
+ <h2 class="recent-order">users list</h2>
 
-
-
-<?php 
+ <?php 
     
   $select_order = "SELECT * FROM `user`";
   $result = mysqli_query($con,$select_order);
@@ -18,7 +16,7 @@ echo "
             <th>s n</th>
             <th>name</th>
             <th>email</th>
-            <th>image</th>
+           
             <th>address</th>
             <th>contact</th>
             <th>delete</th>
@@ -34,19 +32,19 @@ echo "
           $user_address = $row['user_address'];
           $user_mobile = $row['user_mobile'];
           ?>
-<tr>
-    <td><?php echo $number?></td>
-    <td><?php echo $username ?></td>
-    <td><?php echo $user_email ?></td>
-    <td> <img src="../users/users_image/<?php echo $user_image ?>" alt="<?php echo $user_image ?>"></td>
-    <td><?php echo  $user_address ?></td>
-    <td><?php echo  $user_mobile ?></td>
-    <td><a href="">delete</a></td>
-</tr>
-<?php
+ <tr>
+     <td><?php echo $number?></td>
+     <td><?php echo $username ?></td>
+     <td><?php echo $user_email ?></td>
+     <!-- <td> <img src="../users/users_image/<?php echo $user_image ?>" alt="<?php echo $user_image ?>"></td> -->
+     <td><?php echo  $user_address ?></td>
+     <td><?php echo  $user_mobile ?></td>
+     <td class="discarded"><a href="">delete</a></td>
+ </tr>
+ <?php
       $number++;
     }
 }
     ?>
-</tbody>
-</table>
+ </tbody>
+ </table>

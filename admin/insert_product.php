@@ -44,6 +44,12 @@ else{
 }
 ?>
 
+<?php 
+include('../config/config.php');
+include('../functions/common_function.php');
+session_start();
+
+?>
 
 
 <!DOCTYPE html>
@@ -52,16 +58,61 @@ else{
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>insert products</title>
-    <link rel="stylesheet" href="../css/admin.css">
+    <title>home</title>
+    <link rel="stylesheet" href="../css/style.css?v=<?php echo filemtime('../css/style.css'); ?>">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="../css/new_style.css?v=<?php echo filemtime('../css/new_style.css'); ?>">
 </head>
 
 <body>
 
+    <!-- start of nav bar -->
+    <nav>
+
+        <section class="top-nav">
+
+            <article class="logo">
+                <img src="../logo.jpg" alt="">
+            </article>
+
+            <article class="nav-icon">
+                <span class="top-icons" class="profile-toggle" id="profile-toggle">
+                    <i class='fas fa-user'></i>
+
+                </span>
+
+                <div class="mini-profile">
+                    <ul>
+
+                        <li><img src='../logo.jpg' alt='$user_image'></li>
+                        <?php
+        
+        if (!isset($_SESSION['admin_name'])) {
+            echo " <li>
+                            <p>welcome admin</p>
+                        </li>";
+
+
+            echo "<li><a href='./admin_login.php'><i class='fas fa-sign-in-alt'></i>login</a></li>";
+        }
+        else {
+            echo "<li>".$_SESSION['admin_name']."</li>";
+            echo "<li><a href='../users/logout.php'><i class='fas fa-sign-out-alt'></i>logout</a></li>";
+            echo "<script>window.open(./admin_login.php)</script>";
+            
+        }
+        ?>
+                    </ul>
+
+                </div>
+
+            </article>
+        </section>
+    </nav>
 
 
     <form action="" method="post" enctype="multipart/form-data" class="form">
-        <h2 class="head-title">insert a product</h2>
+        <h2 class="recent-order">insert a product</h2>
         <!-- title -->
         <div class="single-form">
             <label for="product_title">product title</label>
@@ -87,7 +138,7 @@ else{
         <!-- categories -->
 
         <div class="single-form">
-
+            <label for="product_categories">categories</label>
             <select name="product_categories" id="" class="form-select">
 
                 <option value="">select categories</option>
@@ -108,7 +159,7 @@ else{
         </div>
         <!-- brands -->
         <div class="single-form">
-
+            <label for="product_brands">brands</label>
             <select name="product_brands" id="" class="form-select">
                 <option value="">select brands</option>
                 <?php 
@@ -156,9 +207,7 @@ else{
             <input type="number" name="product_price" id="product_price" class="form-control"
                 placeholder="enter product price" autocomplete="off" required="required">
         </div>
-        <div class="single-form">
-            <input type="submit" name="insert_product" class=" btn form-control" value="insert products">
-        </div>
+        <input type="submit" name="insert_product" class="btn" value="insert products">
         <!--price  -->
     </form>
 

@@ -1,7 +1,6 @@
-<h1>all payments</h1>
+ <h2 class="recent-order">all payments</h2>
 
-
-<?php 
+ <?php 
     
   $select_order = "SELECT * FROM `user_payment`";
   $result = mysqli_query($con,$select_order);
@@ -32,18 +31,18 @@ echo "
           $payment_mode = $row['payment_mode'];
           $order_date = $row['date'];
           ?>
-<tr>
-    <td><?php echo $number?></td>
-    <td><?php echo $invoice_number ?></td>
-    <td><?php echo $amount ?></td>
-    <td><?php echo $payment_mode ?></td>
-    <td><?php echo $order_date ?></td>
-    <td><a href="">delete</a></td>
-</tr>
-<?php
+ <tr>
+     <td><?php echo $number?></td>
+     <td><?php echo $invoice_number ?></td>
+     <td><?php echo $amount ?></td>
+     <td><?php echo $payment_mode ?></td>
+     <td><?php echo $order_date ?></td>
+     <td class="discarded"><a href="">delete</a></td>
+ </tr>
+ <?php
       $number++;
     }
 }
     ?>
-</tbody>
-</table>
+ </tbody>
+ </table>

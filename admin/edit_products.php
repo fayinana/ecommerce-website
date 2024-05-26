@@ -67,10 +67,8 @@ if($result_update){
 
 
 ?>
-<h1>edit product</h1>
-
-
 <form action="" method="post" enctype="multipart/form-data" class="form">
+    <h2 class="recent-order">edit a product</h2>
 
     <div class="single-form">
         <label for="product_title">product title</label>

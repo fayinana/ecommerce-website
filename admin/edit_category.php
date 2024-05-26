@@ -1,6 +1,6 @@
-<h1>edit category</h1>
+ <h2 class="recent-order">edit category</h2>
 
-<?php 
+ <?php 
 if(isset($_GET['edit_category'])){
     $category_id = $_GET['edit_category'];
 
@@ -15,19 +15,19 @@ if(isset($_GET['edit_category'])){
 ?>
 
 
-<form action="" method="post" class="form">
+ <form action="" method="post" class="form">
 
-    <div class="single-form">
+     <div class="single-form">
 
-        <label for="edit_category">category title</label>
-        <input type="text" name="edit_category_title" value="<?php echo $category_title ?>" required="required">
-        <input class="btn" value="edit" type="submit" name="edit_category">
-    </div>
-</form>
+         <label for="edit_category">category title</label>
+         <input type="text" name="edit_category_title" value="<?php echo $category_title ?>" required="required">
+         <input class="btn" value="edit" type="submit" name="edit_category">
+     </div>
+ </form>
 
 
 
-<?php 
+ <?php 
 
 if (isset($_POST['edit_category'])) {
     $new_cat_title = $_POST['edit_category_title'];

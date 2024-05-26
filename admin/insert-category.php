@@ -22,7 +22,8 @@ else{
 ?>
 
 <form action="" method="post" class="form">
-    <h2 class="head-title">add a category</h2>
+    <h2 class="recent-order">add category</h2>
+
     <div class="underline"></div>
     <div class="input-container single-form">
         <label for="category">Category</label>

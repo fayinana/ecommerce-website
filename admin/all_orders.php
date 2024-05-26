@@ -1,4 +1,7 @@
-<?php 
+ <h2 class="recent-order">all orders</h2>
+
+
+ <?php 
     
   $select_order = "SELECT * FROM `user_order`";
   $result = mysqli_query($con,$select_order);
@@ -31,19 +34,19 @@ echo "
           $order_date = $row['order_date'];
           $order_status = $row['order_status'];
           ?>
-<tr>
-    <td><?php echo $number?></td>
-    <td><?php echo $amount_due ?></td>
-    <td><?php echo $invoice_number ?></td>
-    <td><?php echo $total_product ?></td>
-    <td><?php echo $order_date ?></td>
-    <td><?php echo $order_status ?></td>
-    <td><a href="">delete</a></td>
-</tr>
-<?php
+ <tr>
+     <td><?php echo $number?></td>
+     <td><?php echo $amount_due ?></td>
+     <td><?php echo $invoice_number ?></td>
+     <td><?php echo $total_product ?></td>
+     <td><?php echo $order_date ?></td>
+     <td><?php echo $order_status ?></td>
+     <td class="discarded"><a href="">delete</a></td>
+ </tr>
+ <?php
       $number++;
     }
 }
     ?>
-</tbody>
-</table>
+ </tbody>
+ </table>

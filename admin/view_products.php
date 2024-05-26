@@ -2,13 +2,13 @@
 
     <thead>
         <tr>
-            <th>head 1</th>
-            <th>head 2</th>
-            <th>head 3</th>
-            <th>head 4</th>
-            <th>head 5</th>
-            <th>head 6</th>
-            <th>head 7</th>
+            <th>s no</th>
+            <th>product name</th>
+            <th>price</th>
+            <th>status</th>
+            <th>total in cart</th>
+            <th>edit</th>
+            <th>delete</th>
         </tr>
     </thead>
     <tbody>
@@ -29,9 +29,6 @@
         <tr>
             <td><?php echo $number?></td>
             <td><?php echo $product_title?></td>
-            <td>
-                <img src='product_images/<?php echo $product_image1?>' width='100px' height='100px'>
-            </td>
             <td><?php echo  $product_price?></td>
             <td><?php echo $product_status?></td>
             <td>
@@ -43,10 +40,11 @@
             echo $rows_count;
             ?>
             </td>
-            <td><a href="index.php?edit_products=<?php echo $product_id ?>">edit</a></td>
-            <td><a href="index.php?delete_product=<?php echo $product_id ?>">delete</a></td>
+            <td class=" ditale"><a href="index.php?edit_products=<?php echo $product_id ?>">edit</a></td>
+            <td class="discarded"><a href="index.php?delete_product=<?php echo $product_id ?>">delete</a></td>
         </tr>
         <?php 
+  
         
     }
         ?>

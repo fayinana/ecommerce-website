@@ -1,6 +1,6 @@
-<h1>edit brand</h1>
+ <h2 class="recent-order">edit brands</h2>
 
-<?php 
+ <?php 
 if(isset($_GET['edit_brand'])){
     $brand_id = $_GET['edit_brand'];
 
@@ -15,19 +15,19 @@ if(isset($_GET['edit_brand'])){
 ?>
 
 
-<form action="" method="post" class="form">
+ <form action="" method="post" class="form">
 
-    <div class="single-form">
+     <div class="single-form">
 
-        <label for="edit_brand">brand title</label>
-        <input type="text" name="edit_brand_title" value="<?php echo $brand_title ?>" required="required">
-        <input class="btn" value="edit" type="submit" name="edit_brand">
-    </div>
-</form>
+         <label for="edit_brand">brand title</label>
+         <input type="text" name="edit_brand_title" value="<?php echo $brand_title ?>" required="required">
+         <input class="btn" value="edit" type="submit" name="edit_brand">
+     </div>
+ </form>
 
 
 
-<?php 
+ <?php 
 
 if (isset($_POST['edit_brand'])) {
     $new_cat_title = $_POST['edit_brand_title'];

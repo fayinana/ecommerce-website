@@ -137,12 +137,6 @@ else{
 }
 ?>
     </main>
-    <!-- footer -->
-    <!-- <footer>
-        <p></p>
-    </footer> -->
-
-
     <script src="./js/script.js"></script>
 </body>
 

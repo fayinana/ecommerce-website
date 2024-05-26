@@ -169,7 +169,8 @@ if(isset( $_SESSION['username'])){
 
         <section class="products">
             <?php 
-            getproducts();
+                      search_product();
+
             get_filtered_product_category();
             get_filtered_product_brand();
 ?>
@@ -184,10 +185,7 @@ if(isset( $_SESSION['username'])){
 include('./config/footer.php')
 
 ?>
-    <!-- <?php 
-                $ip = getRealIPAddr();
-                echo 'value : '.$ip;
-                ?> -->
+
 
     <script src="./js/script.js?v=<?php echo filemtime('./js/script.js'); ?>"></script>
 </body>
