@@ -2,6 +2,16 @@
 include('./config/config.php');
 include('./functions/common_function.php');
 session_start();
+if(isset( $_SESSION['username'])){
+
+    $username = $_SESSION['username'];
+    $user_image = "select * from `user` where username='$username'";
+    $result_image = mysqli_query($con,$user_image);
+    $row_image = mysqli_fetch_array($result_image);
+    $user_image = $row_image['user_image'];
+    
+    
+}
 ?>
 
 
@@ -40,9 +50,22 @@ session_start();
 
                 </span>
 
+
                 <div class="mini-profile">
                     <ul>
-                        <li><img src="./images/customer-img.jpg" alt=""></li>
+
+                        <?php
+                        
+                          if (!isset($_SESSION['username'])) {
+                            echo "<li class='not-login'> <i class='fas fa-user'></i></li>";
+                        }
+                        else{
+    echo "<li><img src='./users/users_image/$user_image' alt='$user_image'></li> ";
+
+}
+
+                              ?>
+
 
                         <?php 
         
@@ -117,123 +140,54 @@ session_start();
 ?>
 
     <!-- ERROR DISPLAY -->
-
     <main class="main-section">
         <!-- products -->
-        <section class="products">
+        <!-- </section> -->
 
-            <?php 
-            get_all_products();
-            get_filtered_product_category();
-            get_filtered_product_brand();
-// $select_query = "SELECT * FROM `products` order by rand()";
-// $result_query = mysqli_query($con,$select_query);
-// // $row = mysqli_fetch_assoc($result_query);
-// // echo $row['product_title'];
-
-// while ($row = mysqli_fetch_assoc($result_query)) {
-//   $product_title = $row['product_title'];
-//  $product_description = $row['product_discription'];
-//  $product_keywords = $row['product_keywords'];
-//  $product_categories = $row['category_id'];
-//  $product_brands = $row['brand_id'];
-//  $product_price = $row['product_price'];
-//  $product_image1 = $row['product_image1'];
-
-
-// echo "
-//     <div class='card'>
-//         <div class='ratio-box'>
-//             <img src='./admin/product_images/$product_image1' class='the-img' alt='$product_title'>
-//         </div>
-//         <div class='card-body'>
-//             <div class='card-info'>
-//                 <span class='product-name'>$product_title</span>
-//                 <span class='card-price'>$$product_price</span>
-//             </div>
-//             <div class='card-buttons'>
-//                 <span class='add-to-fev'>O</span>
-//                 <span class='btn add-to-cart'>add to cart</span>
-//             </div>
-//         </div>
-//     </div>";
-// }
-
-?>
-
-        </section>
-        <!--end products -->
-
-        <!-- side bar -->
-        <section class="side-bar">
-
+        <section class="main-menu">
             <div class="profile">
-                <!-- <ul>
-                    <li class="list"><a href="">
-                            <div class="profile-card">
-                                <img class="the-img" src="./images/customer-img.jpg" alt="">
-                            </div>
-                            <p>hello gust</p>
-                        </a></li>
-                    <li class="list"><a href="">
-                            <span class="icon"></span>login/signup
-                        </a></li>
-
-                </ul> -->
             </div>
-
             <div class="category">
                 <h2 class="title">category</h2>
                 <ul class="category-list">
-
                     <?php 
                 get_category()
-
-//                 $select_categories = "SELECT * FROM `categories`";
-//                 $result_categories = mysqli_query($con , $select_categories); 
-              
-//                 while(  $row_data = mysqli_fetch_assoc($result_categories)){
-//                     $category_title = $row_data["category_title"]; 
-//                     $category_id = $row_data["category_id"];
-//  echo "<li class='link'><a href='index.php?category=$category_id'> $category_title</a></li>";
-                   
-//                 }
-            
                 ?>
-
                 </ul>
             </div>
             <div class="factory">
                 <h2 class="title">brand</h2>
                 <ul class="category-list">
-
                     <?php 
                     get_brands()
-//                 $select_brands = "SELECT * FROM `brands`";
-//                 $result_brands = mysqli_query($con , $select_brands); 
-           
-//                 while(  $row_data = mysqli_fetch_assoc($result_brands)){
-//                     $brand_title = $row_data["brand_title"]; 
-//                     $brand_id = $row_data["brand_id"];
-//  echo "<li class='link'><a href='index.php?brand=$brand_id '> $brand_title</a></li>";
-                   
-//                 }
                 ?>
                 </ul>
             </div>
+        </section>
 
+        <section class="products">
+            <?php 
+            getproducts();
+            get_filtered_product_category();
+            get_filtered_product_brand();
+?>
         </section>
         <!-- end of side bar -->
 
     </main>
     <!-- footer -->
-    <!-- <footer>
-        <p></p>
-    </footer> -->
 
+    <?php 
+
+include('./config/footer.php')
+
+?>
+    <!-- <?php 
+                $ip = getRealIPAddr();
+                echo 'value : '.$ip;
+                ?> -->
 
     <script src="./js/script.js?v=<?php echo filemtime('./js/script.js'); ?>"></script>
-
 </body>
 
 </html>

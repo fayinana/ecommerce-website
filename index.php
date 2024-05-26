@@ -2,6 +2,15 @@
 include('./config/config.php');
 include('./functions/common_function.php');
 session_start();
+if(isset($_SESSION['username'])){
+
+    $username = $_SESSION['username'];
+    $user_image = "select * from `user` where username='$username'";
+    $result_image = mysqli_query($con,$user_image);
+    $row_image = mysqli_fetch_array($result_image);
+    $user_image = $row_image['user_image'];
+}
+
 ?>
 
 
@@ -42,7 +51,19 @@ session_start();
 
                 <div class="mini-profile">
                     <ul>
-                        <li><img src="./images/customer-img.jpg" alt=""></li>
+
+                        <?php
+                        
+                          if (!isset($_SESSION['username'])) {
+                            echo "<li class='not-login'> <i class='fas fa-user'></i></li>";
+                        }
+                        else{
+    echo "<li><img src='./users/users_image/$user_image' alt='$user_image'></li> ";
+
+}
+
+                              ?>
+
 
                         <?php 
         
@@ -119,79 +140,50 @@ session_start();
     <!-- end of the nav bar -->
 
 
-
-    <!-- 
-    <header>
-        <video controls muted autoplay loop class="video-container">
-            <source src="./banner.mp4" type="video/mp4" />
-        </video>
-        <button class="switch-btn">
-            <span>
-                play
-            </span>
-            <span>
-                pause
-            </span>
-            <span class="switch"></span>
-        </button>
-    </header> -->
-
-
-
-
-
     <!-- ERROR DISPLAY -->
 
     <main class="main-section">
         <!-- products -->
         <!-- </section> -->
-        <section class="products">
-            <?php 
-            getproducts();
-            get_filtered_product_category();
-            get_filtered_product_brand();
 
-?>
-
-        </section>
-        <!--end products -->
-
-        <!-- side bar -->
-        <section class="side-bar">
-
+        <section class="main-menu">
             <div class="profile">
             </div>
-
             <div class="category">
                 <h2 class="title">category</h2>
                 <ul class="category-list">
-
                     <?php 
                 get_category()
-            
                 ?>
-
                 </ul>
             </div>
             <div class="factory">
                 <h2 class="title">brand</h2>
                 <ul class="category-list">
-
                     <?php 
                     get_brands()
                 ?>
                 </ul>
             </div>
+        </section>
 
+        <section class="products">
+            <?php 
+            getproducts();
+            get_filtered_product_category();
+            get_filtered_product_brand();
+?>
         </section>
         <!-- end of side bar -->
 
     </main>
     <!-- footer -->
-    <!-- <footer>
-        <p></p>
-    </footer> -->
 
+    <?php 
+
+include('./config/footer.php')
+
+?>
     <!-- <?php 
                 $ip = getRealIPAddr();
                 echo 'value : '.$ip;

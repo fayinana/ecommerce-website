@@ -4,13 +4,11 @@
   box-sizing: border-box;
 }
 
-/* variables */
-
 :root {
   --active: #d1fc51;
   --active-hover: #e2fa9b;
-  --box-bc-dark: #363636;
-  --body-bc-dark: #1f1f1f;
+  --box-bc-dark: #ffffff;
+  --body-bc-dark: #b2b2b2;
   --box-bc-light: #b2b2b2;
   --body-bc-light: #ffffff;
   --clr-white: white;
@@ -25,8 +23,9 @@
   --ff-secondary: "Open Sans", sans-serif;
 }
 
-/* normalization */
-
+::placeholder {
+  text-transform: capitalize;
+}
 *,
 ::after,
 ::before {
@@ -103,8 +102,6 @@ img {
   object-fit: cover;
 }
 
-/* global style */
-
 .btn {
   border: none;
   padding: 0.5rem 1.25rem;
@@ -135,14 +132,13 @@ img {
 
 .title {
   border: none;
-  padding: 1rem 1.25rem;
+  padding: 1rem 0;
+  text-align: center;
   text-transform: capitalize;
-  background: var(--active);
+  background: var(--active-clr);
   font-weight: 500;
   font-size: 1rem;
-  border-radius: 5px;
-  color: var(--body-bc-dark);
-  cursor: pointer;
+  color: var(--bc-light);
 }
 .btn:hover {
   background: var(--active-hover);
@@ -156,8 +152,6 @@ a {
   margin: 0 auto;
   max-width: 1200px;
 }
-
-/* nav style*/
 
 nav {
   position: sticky;
@@ -240,15 +234,19 @@ nav {
 }
 
 .link {
-  color: var(--active);
+  color: var(--btn-bc);
   padding: 1rem;
   margin: 0.25rem;
   text-transform: capitalize;
   border-radius: 10px;
   cursor: pointer;
 }
+.link a {
+  width: 100%;
+  height: 100%;
+}
 .link:hover {
-  background: var(--body-bc-dark);
+  background: var(--active-hover);
 }
 .search-form {
   display: flex;
@@ -261,7 +259,6 @@ nav {
   width: 230px;
   height: 40px;
   padding: 0 0.5rem;
-  /* display: none; */
 }
 
 .search-btn .text {
@@ -316,10 +313,6 @@ nav {
   }
 }
 
-/* end of nav style */
-
-/* main section */
-
 @media screen and (min-width: 922px) {
   .main-section {
     width: 100%;
@@ -329,7 +322,6 @@ nav {
     gap: 2rem;
   }
 
-  /* side bar */
   .side-bar {
     position: sticky;
     top: 100px;
@@ -337,6 +329,7 @@ nav {
     width: calc(100% - 2rem - 75%);
     display: flex;
     flex-direction: column;
+    border-radius: 10px;
     background: var(--box-bc-dark);
     align-self: baseline;
     box-shadow: var(--dark-shadow);
@@ -376,7 +369,6 @@ nav {
     position: absolute;
     top: 0;
   }
-  /* products */
   .products {
     min-height: 100%;
     width: 75%;
@@ -411,14 +403,11 @@ nav {
   }
 }
 
-/* cart display style */
-
 .cart-container {
   width: 100%;
 }
 
 .cart-container table thead {
-  /* height: 100px; */
   color: var(--body-bc-light);
 }
 
@@ -434,7 +423,6 @@ nav {
   text-transform: capitalize;
 }
 
-/* insert a product style */
 .form {
   width: 100%;
   max-width: 400px;
@@ -456,7 +444,6 @@ nav {
   margin-bottom: 0.125rem;
   letter-spacing: var(--spacing);
 }
-/* form style */
 .single-form input {
   border: none;
   width: 100%;
@@ -489,4 +476,98 @@ nav {
 
 .recommendation a {
   color: orange;
+}
+
+:root {
+  --bc-light: #ffffff;
+  --active-clr: #60ad56;
+  --btn-bc: #252525;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+body {
+  width: 100%;
+  background: var(--bc-light);
+}
+
+img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+}
+
+nav {
+  width: 100%;
+  height: 100px;
+}
+
+.top-nav {
+  height: 50px;
+  border-bottom: 1px solid gray;
+  margin-top: 2rem;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 1rem;
+}
+
+.nav-icon {
+  height: 100%;
+  padding: 0 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  gap: 0 1rem;
+}
+
+.top-icons {
+  position: relative;
+  padding: 1rem;
+  background: rgb(235, 231, 231);
+}
+.top-text {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background: red;
+  color: white;
+  height: 20px;
+  width: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  font-size: 0.75rem;
+}
+
+.bottom-nav {
+  height: 70px;
+  width: 100%;
+  padding: 0 2rem;
+}
+
+.nav-lists {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0 3rem;
+  height: 100%;
+  width: 100%;
+  list-style-type: none;
+}
+
+.nav-list {
+  text-transform: capitalize;
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+
+.nav-list.active {
+  color: var(--active-clr);
 }

@@ -1,8 +1,4 @@
 <!-- html  -->
-
-
-<?php 
-
-include('./config\footer.php')
-
-?>
+<footer class="footer">
+    <p>all right are reserved</p>
+</footer>

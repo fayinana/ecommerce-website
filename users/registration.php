@@ -10,7 +10,10 @@ include('../functions/common_function.php');
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/style.css?v=<?php echo filemtime('../css/style.css'); ?>">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="../css/new_style.css?v=<?php echo filemtime('../css/new_style.css'); ?>">
+
 </head>
 
 <body>
@@ -77,6 +80,7 @@ if ($row_count > 0) {
 }
  else if ($user_password != $conform_user_password) {
             echo "<script>alert('password is not match')</script>";
+
     } 
 else{
     // insertion
@@ -92,7 +96,6 @@ if($sql_execute){
 else{
     echo "<script>alert('user not added')</script>";   
 }
-}
 
 $select_cart_items = "select * from `cart` where ip_address='$user_ip'";
 $result_cart = mysqli_query($con,$select_cart_items); 
@@ -100,13 +103,12 @@ $row_count = mysqli_num_rows($result_cart);
 if($row_count > 0){
     $_SESSION['username'] = $user_username;
     echo "<script>alert('you have items in cart')</script>";
-    echo "<script>window.open('../users/checkout.php','_self')</script>";
-    
+    echo "<script>window.open('../users/checkout.php','_self')</script>";    
 }
 else{
     echo "<script>window.open('../index.php','_self')</script>";
-
-
+    
+}
 }
 
 }

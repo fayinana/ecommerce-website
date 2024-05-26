@@ -2,7 +2,17 @@
 include('./config/config.php');
 include('./functions/common_function.php');
 session_start();
-?>
+
+if(isset( $_SESSION['username'])){
+
+    $username = $_SESSION['username'];
+    $user_image = "select * from `user` where username='$username'";
+    $result_image = mysqli_query($con,$user_image);
+    $row_image = mysqli_fetch_array($result_image);
+    $user_image = $row_image['user_image'];
+    
+    
+}?>
 
 
 
@@ -40,9 +50,22 @@ session_start();
 
                 </span>
 
+
                 <div class="mini-profile">
                     <ul>
-                        <li><img src="./images/customer-img.jpg" alt=""></li>
+
+                        <?php
+                        
+                          if (!isset($_SESSION['username'])) {
+                            echo "<li class='not-login'> <i class='fas fa-user'></i></li>";
+                        }
+                        else{
+    echo "<li><img src='./users/users_image/$user_image' alt='$user_image'></li> ";
+
+}
+
+                              ?>
+
 
                         <?php 
         

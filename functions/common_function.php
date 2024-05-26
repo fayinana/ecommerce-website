@@ -322,19 +322,20 @@ function total_cart_price(){
 
 function get_user_order_detail() {
     global $con;
+if(isset($_SESSION['username'])){
 
     $username = $_SESSION['username'];
     $get_details = "SELECT * FROM `user` WHERE username = '$username'";
     $result_query = mysqli_query($con, $get_details);
     while ($row_query = mysqli_fetch_array($result_query)) {
         $user_id = $row_query['user_id'];
-
+        
         if (!isset($_GET['edit_account']) && !isset($_GET['my_orders']) && !isset($_GET['delete_account'])) {
             $get_orders = "SELECT * FROM `user_order` WHERE user_id = $user_id AND order_status = 'pending'";
             $result_orders_query = mysqli_query($con, $get_orders);
             $row_count = mysqli_num_rows($result_orders_query);
             if ($row_count > 0) {
-                echo "You have $row_count pending orders.";
+                echo "You have <b class='pending'>$row_count</b> pending orders.";
                 echo "<a href='profile.php?my_orders'>order detail</a>";
             }
             else{
@@ -343,6 +344,7 @@ function get_user_order_detail() {
             }
         }
     }
+}
 }
 
 
