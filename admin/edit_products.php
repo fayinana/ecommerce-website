@@ -33,6 +33,8 @@ if(isset($_GET['edit_products'])){
 
   if ($product_title == '' || $product_description == '' || $product_keywords == '' || $product_price == '' || $product_image1 == '' || $product_image2 == '' || $product_image3 == '') {
     echo "<script>alert('fill all place')</script>";
+        bottomNotification('fill all place', 'success', 'edit_products.php');
+
   }
   else{
 
@@ -58,8 +60,10 @@ WHERE product_id = $product_id
 
 $result_update = mysqli_query($con,$update_products);
 if($result_update){
-    echo "<script>alert('updated successfully')</script>";
-    echo "<script>window.open('./index.php','_self')</script>";
+    // echo "<script>alert('updated successfully')</script>";
+    // echo "<script>window.open('./index.php','_self')</script>";
+        bottomNotification('product is updated successfully', 'success', 'index.php');
+
 }
       
     }

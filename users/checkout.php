@@ -9,13 +9,8 @@ if(isset( $_SESSION['username'])){
     $result_image = mysqli_query($con,$user_image);
     $row_image = mysqli_fetch_array($result_image);
     $user_image = $row_image['user_image'];
-    
-    
 }
               ?>
-
-
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -29,16 +24,12 @@ if(isset( $_SESSION['username'])){
 </head>
 
 <body>
-
     <!-- start of nav bar -->
     <nav>
-
         <section class="top-nav">
-
             <article class="logo">
                 <img src="../logo.jpg" alt="">
             </article>
-
             <form action="search_product.php" method="get" class="search-form">
                 <input type="search" class="search" placeholder="Search a product..." name="search_data">
                 <input type="submit" value="Search" name="search_data_product">
@@ -46,31 +37,23 @@ if(isset( $_SESSION['username'])){
             <article class="nav-icon">
                 <span class="top-icons" class="profile-toggle" id="profile-toggle">
                     <i class='fas fa-user'></i>
-
                 </span>
-
                 <div class="mini-profile">
                     <ul>
                         <?php echo "<li><img src='./users_image/$user_image' alt='$user_image'></li> " ?>
-
                         <?php 
-        
         if (!isset($_SESSION['username'])) {
             echo " <li>
                             <p>welcome gust</p>
                         </li>";
-
-
             echo "<li><a href='user_login.php'><i class='fas fa-sign-in-alt'></i>login</a></li>";
         }
         else {
             echo "<li>".$_SESSION['username']."</li>";
             echo "<li><a href='logout.php'><i class='fas fa-sign-out-alt'></i>logout</a></li>";
-            
         }
         ?>
                     </ul>
-
                 </div>
                 <span class="top-icons">
                     <a href="../cart.php">
@@ -79,7 +62,6 @@ if(isset( $_SESSION['username'])){
                             <?php 
                             cart_item();
                             ?>
-
                         </span>
                     </a>
                 </span>
@@ -118,7 +100,6 @@ if(isset( $_SESSION['username'])){
                 <li class="nav-list"><a href="">
                         <span class="icon"><i class="fas fa-envelope"></i> </span>contact
                     </a></li>
-
             </ul>
         </section>
     </nav>
@@ -126,7 +107,6 @@ if(isset( $_SESSION['username'])){
     cart()                     
 ?>
     <!-- ERROR DISPLAY -->
-
     <main class="main-section">
         <?php 
 if(!isset($_SESSION['username'])){
@@ -137,7 +117,7 @@ else{
 }
 ?>
     </main>
-    <script src="./js/script.js"></script>
+    <script src="../js/script.js"></script>
 </body>
 
 </html>

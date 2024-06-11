@@ -6,8 +6,9 @@ if (isset($_GET['delete_category'])) {
 $delete_result = mysqli_query($con,$delete_query);
     
     if ($delete_result) {
-        echo "<script>alert('category is deleted')</script>";
-        echo "<Script>window.open('index.php','_self')</Script>";
+        // echo "<script>alert('category is deleted')</script>";
+        // echo "<Script>window.open('index.php','_self')</Script>";
+        bottomNotification('category is deleted', 'success', 'index.php');
 
     }
 }

@@ -7,7 +7,9 @@ if(isset($_POST['insert_cat'])){
     $result_select = mysqli_query($con, $select_query);
     $number=mysqli_num_rows($result_select);
     if($number > 0){
-          echo "<script>alert('the category is in side the data base')</script>";
+        //   echo "<script>alert('the category is in side the data base')</script>";
+        bottomNotification('the category is in side the data base', 'fail', 'index.php?insert-category');
+
     }
 else{
     $insert_query = "INSERT INTO `categories` (category_title) VALUES ('$category_title')";
@@ -15,7 +17,9 @@ else{
     
     if($result){
         // success message
-        echo "<script>alert('added successfully')</script>";
+        // echo "<script>alert('added successfully')</script>";
+        bottomNotification('category added successfully', 'success', 'index.php?insert-category');
+
     } 
 }
 }

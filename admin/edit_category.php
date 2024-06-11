@@ -34,8 +34,10 @@ if (isset($_POST['edit_category'])) {
     $update_cat = "UPDATE `categories` SET category_title='$new_cat_title' WHERE category_id=$category_id";
     $result = mysqli_query($con,$update_cat);
     if ($result) {
-        echo "<Script>alert('cat is updated')</Script>";
-        echo "<Script>window.open('index.php','_self')</Script>";
+        // echo "<Script>alert('cat is updated')</Script>";
+        // echo "<Script>window.open('index.php','_self')</Script>";
+        bottomNotification('category is updated', 'success', 'index.php');
+
         
     }
 }

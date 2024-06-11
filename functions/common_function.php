@@ -1,6 +1,31 @@
 <?php
 
-// include('./config/config.php'); 
+// include('./js/script.js'); 
+function BottomNotification($message, $type, $destination) {
+    $iconClass = ($type === "fail") ? "fa fa-exclamation-circle" : "fa fa-check-circle";
+    $notificationClass = ($type === "fail") ? "small-notification fail" : "small-notification success";
+    $borderClass = ($type === "fail") ? "bottom-border fail" : "bottom-border success";
+
+    echo "
+    <div class='$notificationClass'>
+        <span class='icon $type'><i class='$iconClass'></i></span>
+        <p class='text'>$message</p>
+        <div class='$borderClass'></div>
+    </div>
+    <script>
+        const notificationContainer = document.querySelector('.small-notification');
+        notificationContainer.style.transform = 'translateX(0%)';
+
+        setTimeout(() => {
+            notificationContainer.style.visibility = 'hidden';
+            setTimeout(() => {
+                notificationContainer.style.transform = 'translateX(150%)';
+                window.open('$destination','_self')
+            }, 500);
+        }, 2500);
+    </script>
+    ";
+}
 
 function getproducts(){
 global $con; 
@@ -28,7 +53,7 @@ echo "
                 <span class='product-name'>$product_title</span>
                 <span class='card-price'>$$product_price</span>
             </div>
-            <p class='product-description'>$product_description;</p>
+            <p class='product-description'>$product_description</p>
             <div class='card-buttons'>
                 <a  href='product_details.php?product_id=$product_id' class='see-more'>see more</a>
                 <a  href='index.php?add_to_cart=$product_id' class='add-to-cart'>add to cart</a>
@@ -64,7 +89,7 @@ echo "
                 <span class='product-name'>$product_title</span>
                 <span class='card-price'>$$product_price</span>
             </div>
-            <p class='product-description'>$product_description;</p>
+            <p class='product-description'>$product_description</p>
             <div class='card-buttons'>
                 <a  href='product_details.php?product_id=$product_id' class='see-more'>see more</a>
                 <a  href='index.php?add_to_cart=$product_id' class='add-to-cart'>add to cart</a>
@@ -105,7 +130,7 @@ echo "
                 <span class='product-name'>$product_title</span>
                 <span class='card-price'>$$product_price</span>
             </div>
-            <p class='product-description'>$product_description;</p>
+            <p class='product-description'>$product_description</p>
             <div class='card-buttons'>
                 <a  href='product_details.php?product_id=$product_id' class='see-more'>see more</a>
                 <a  href='index.php?add_to_cart=$product_id' class='add-to-cart'>add to cart</a>
@@ -145,7 +170,7 @@ echo "
                 <span class='product-name'>$product_title</span>
                 <span class='card-price'>$$product_price</span>
             </div>
-            <p class='product-description'>$product_description;</p>
+            <p class='product-description'>$product_description</p>
             <div class='card-buttons'>
                 <a  href='product_details.php?product_id=$product_id' class='see-more'>see more</a>
                 <a  href='index.php?add_to_cart=$product_id' class='add-to-cart'>add to cart</a>
@@ -185,7 +210,7 @@ $search_query = "SELECT * FROM `products` where product_keywords like '%$search_
 $result_query = mysqli_query($con,$search_query);
 $number_of_rows = mysqli_num_rows($result_query);
 if($number_of_rows == 0){
-    echo "<h1>error</h1>";
+    echo "<script>'searchItemNotFound('car')'</script>";
     // adding no category animation
 }
 while ($row = mysqli_fetch_assoc($result_query)) {
@@ -207,7 +232,7 @@ echo "
                 <span class='product-name'>$product_title</span>
                 <span class='card-price'>$$product_price</span>
             </div>
-            <p class='product-description'>$product_description;</p>
+            <p class='product-description'>$product_description</p>
             <div class='card-buttons'>
                 <a  href='product_details.php?product_id=$product_id' class='see-more'>see more</a>
                 <a  href='index.php?add_to_cart=$product_id' class='add-to-cart'>add to cart</a>
@@ -285,8 +310,6 @@ function getRealIPAddr()
 
 
 
-
-
 function cart() {
     if (isset($_GET['add_to_cart'])) {
         global $con;
@@ -296,27 +319,21 @@ function cart() {
         $result_query = mysqli_query($con, $select_query);
         $number_of_rows = mysqli_num_rows($result_query);
         if ($number_of_rows > 0) {
-            echo "<script>alert('Product already in the cart')</script>";
-            echo "<script>window.open('index.php','_self')</script>";
+            bottomNotification('Product already in the cart', 'fail','index.php');
+            // echo "<script>alert('Product already in the cart')</script>";
+            // echo "<script>window.open('index.php','_self')</script>";
         } else {
             $insert_query = "INSERT INTO `cart` (product_id, ip_address, quantity) VALUES ($get_product_id, '$get_ip_address', 1)";
             $result_query = mysqli_query($con, $insert_query);
-            echo "<script>alert('item is added to cart')</script>";
-            echo "<script>window.open('index.php','_self')</script>";
+            
+            bottomNotification('the product is added to the cart', 'success','index.php');
+
+                //   bottomNotification('cat is updated', 'success','index.php');
+           
+            // echo "<script>window.open('index.php','_self')</script>";
         }
     }
 }
-
-
-
-
-
-
-
-
-
-
-
 function cart_item(){
     if (isset($_GET['add_to_cart'])) {
         global $con;
@@ -381,7 +398,7 @@ if(isset($_SESSION['username'])){
     while ($row_query = mysqli_fetch_array($result_query)) {
         $user_id = $row_query['user_id'];
         
-        if (!isset($_GET['edit_account']) && !isset($_GET['my_orders']) && !isset($_GET['delete_account'])) {
+        if (!isset($_GET['edit_account']) && !isset($_GET['my_orders']) && !isset($_GET['delete_account']) ) {
             $get_orders = "SELECT * FROM `user_order` WHERE user_id = $user_id AND order_status = 'pending'";
             $result_orders_query = mysqli_query($con, $get_orders);
             $row_count = mysqli_num_rows($result_orders_query);
@@ -397,6 +414,41 @@ if(isset($_SESSION['username'])){
     }
 }
 }
+
+
+function  get_dashboard(){
+    
+    if (!isset($_GET['edit_account']) && !isset($_GET['my_orders']) && !isset($_GET['delete_account']) && !isset($_GET['confirm_payment']) && !isset($_GET['pending_order'])) {
+        
+echo "<h2>Analytics</h2>
+<section class='main-task'>
+    <div class='analytics_dashboard'>
+        <section class='analytic_dashboard'>
+            <div class='info'>
+                <p class=''>total sales</p>
+                <h1>$65,024</h1>
+                </div>
+                <div class='graph1'>+77%</div>
+                </section>
+                <section class='analytic_dashboard'>
+                <div class='info'>
+                <p class=''>total sales</p>
+                <h1>$24,981</h1>
+                </div>
+                <div class='graph2'>+95%</div>
+                </section>
+                <section class='analytic_dashboard'>
+                <div class='info'>
+                <p class=''>total sales</p>
+                <h1>$14,1147</h1>
+                </div>
+                <div class=' graph3'>+81%
+                </div>
+                </section>
+    </div>" ;
+    }
+}
+
 
 
 ?>

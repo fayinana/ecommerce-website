@@ -20,6 +20,7 @@ include('../config/config.php');
 
 <body>
     <form action="" class="form" method="post" enctype="multipart/form-data">
+        <h6 class="recent-order">user login</h6>
 
         <div class="single-form">
             <label for="name">username</label>
@@ -38,6 +39,8 @@ include('../config/config.php');
         <p class="recommendation">don't have an account <a href="../users/registration.php">register</a></p>
 
     </form>
+    <script src="../js/script.js?v=<?php echo filemtime('../js/script.js'); ?>"></script>
+
 </body>
 
 </html>
@@ -64,24 +67,33 @@ if (password_verify($user_password,$row_data['user_password'])) {
     $_SESSION['username'] = $user_username;
     if($row_count == 1 and $row_count_cart==0){
         $_SESSION['username'] = $user_username;
-        echo "<script>alert('login successfully')</script>";
-        echo "<script>window.open('./profile.php','_self')</script>";
+        // echo "<script>alertMessage('login successfully','success','./profile.php');</script>";
+        BottomNotification('login successfully', 'success', './profile.php');
+        // echo "<script>window.open('./profile.php','_self')</script>";
     }
     
     else{
         $_SESSION['username'] = $user_username;
-        echo "<script>alert('login successfully')</script>";
-        echo "<script>window.open('./payment.php','_self')</script>";
+        // echo "<script>alertMessage('login successfully','success','./payment.php');</script>";
+        BottomNotification('login successfully', 'success', './payment.php');
+        
     }
     
 }
 else{
-    echo "<script>alert('invalid password')</script>";
+        // echo "<script>alertMessage('invalid password','fail','./user_login.php');</script>";
+        BottomNotification('invalid password', 'fail', './user_login.php');
+        
+
 
 }
 }
 else{
-    echo "<script>alert('invalid user')</script>";
+        //    echo "<script>alertMessage('invalid user','fail','./user_login.php');</script>";
+              BottomNotification('invalid user', 'fail', './user_login.php');
+
+
+
 }
 }
 

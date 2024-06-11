@@ -1,5 +1,6 @@
 <?php
 include("../config/config.php");
+include("../functions/common_function.php");
 
 if (isset($_POST['admin_registration'])) {
     $admin_name = mysqli_real_escape_string($con, $_POST['admin_name']);
@@ -13,9 +14,14 @@ if (isset($_POST['admin_registration'])) {
     $row_count = mysqli_num_rows($result);
 
     if ($row_count > 0) {
-        echo "<script>alert('Admin already has an account');</script>";
+        // echo "<script>alert('Admin already has an account');</script>";
+ bottomNotification('Admin already has an account', 'fail', './admin_registration.php');
+
+
     } elseif ($admin_password !== $confirm_password) {
-        echo "<script>alert('Passwords do not match');</script>";
+        // echo "<script>alert('Passwords do not match');</script>";
+ bottomNotification('Passwords do not match', 'fail', './admin_registration.php');
+
     } else {
         // Hash the password before storing it in the database
         $hashed_password = password_hash($admin_password, PASSWORD_DEFAULT);
@@ -24,10 +30,14 @@ if (isset($_POST['admin_registration'])) {
         $result = mysqli_query($con, $insert_query);
 
         if ($result) {
-            echo "<script>alert('Admin added successfully');</script>";
-            echo "<script>window.open('index.php','_self')</script>";
+            // echo "<script>alert('Admin added successfully');</script>";
+            // echo "<script>window.open('index.php','_self')</script>";
+ bottomNotification('Admin added successfully', 'success', './index.php');
+            
         } else {
-            echo "<script>alert('An error occurred while registering the admin');</script>";
+            // echo "<script>alert('An error occurred while registering the admin');</script>";
+ bottomNotification('registering is failed', 'fail', './admin_registration.php');
+            
         }
     }
 }
@@ -47,6 +57,8 @@ if (isset($_POST['admin_registration'])) {
 
 <body>
     <form action="" class="form" method="post" enctype="multipart/form-data">
+        <h6 class="recent-order">admin registration</h6>
+
         <div class="single-form">
             <label for="admin_name">Admin Name</label>
             <input name="admin_name" type="text" placeholder="Enter your username" required>
@@ -66,7 +78,8 @@ if (isset($_POST['admin_registration'])) {
         </div>
 
         <input type="submit" value="Register" name="admin_registration" class="btn">
-        <p>Have an account? <a href="./admin_login.php">Login</a></p>
+        <p class="recommendation">Have an account? <a href="./admin_login.php">login</a></p>
+
     </form>
 </body>
 

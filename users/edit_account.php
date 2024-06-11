@@ -33,10 +33,7 @@ if(isset($_SESSION['username'])){
                 WHERE user_id = $update_id";
 $result_update_data = mysqli_query($con,$update_data);
 if($result_update_data){
-    echo "<script>alert('updated')</script>";
-    echo "<script>window.open('logout.php','_self')</script>";
-    
-    
+        echo "<script>alertMessage('profile updated successfully','success','logout.php');</script>"; 
 }
 
 

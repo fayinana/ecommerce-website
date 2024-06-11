@@ -34,8 +34,10 @@ if (isset($_POST['edit_brand'])) {
     $update_cat = "UPDATE `brands` SET brand_title='$new_cat_title' WHERE brand_id=$brand_id";
     $result = mysqli_query($con,$update_cat);
     if ($result) {
-        echo "<Script>alert('cat is updated')</Script>";
-        echo "<Script>window.open('index.php','_self')</Script>";
+      
+        bottomNotification('brand is updated', 'success', 'index.php');
+
+      
         
     }
 }

@@ -16,7 +16,6 @@ echo "
             <th>s n</th>
             <th>name</th>
             <th>email</th>
-           
             <th>address</th>
             <th>contact</th>
             <th>delete</th>
@@ -26,6 +25,7 @@ echo "
 ";
       $number = 1;
       while($row = mysqli_fetch_array($result)){
+          $user_id = $row['user_id'];
           $username = $row['username'];
           $user_email = $row['user_email'];
           $user_image = $row['user_image'];
@@ -39,7 +39,9 @@ echo "
      <!-- <td> <img src="../users/users_image/<?php echo $user_image ?>" alt="<?php echo $user_image ?>"></td> -->
      <td><?php echo  $user_address ?></td>
      <td><?php echo  $user_mobile ?></td>
-     <td class="discarded"><a href="">delete</a></td>
+     <td class="discarded"><a href='index.php?delete_users=<?php echo $user_id ?>'>delete</a></td>
+
+
  </tr>
  <?php
       $number++;

@@ -150,7 +150,7 @@ if(isset($_SESSION['username'])){
             <div class="profile">
             </div>
             <div class="category">
-                <h2 class="title">category</h2>
+                <h2 class="title"><i class="fas fa-sitemap"></i> category</h2>
                 <ul class="category-list">
                     <?php 
                 get_category()
@@ -158,7 +158,7 @@ if(isset($_SESSION['username'])){
                 </ul>
             </div>
             <div class="factory">
-                <h2 class="title">brand</h2>
+                <h2 class="title"><i class="fas fa-building"></i> brand</h2>
                 <ul class="category-list">
                     <?php 
                     get_brands()

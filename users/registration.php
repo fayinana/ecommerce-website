@@ -18,6 +18,8 @@ include('../functions/common_function.php');
 
 <body>
     <form action="" class="form" method="post" enctype="multipart/form-data">
+        <h6 class="recent-order">user registration</h6>
+
         <div class="single-form">
             <label for="name">username</label>
             <input type="text" name="user_username" id="name" placeholder="enter user name" autocomplete="off"
@@ -55,6 +57,10 @@ include('../functions/common_function.php');
         <input type="submit" value="register" class="btn" name="user_register">
         <p class="recommendation">already have an account <a href="user_login.php">login</a></p>
     </form>
+
+
+    <script src="../js/script.js?v=<?php echo filemtime('../js/script.js'); ?>"></script>
+
 </body>
 
 </html>
@@ -91,10 +97,13 @@ else{
 $sql_execute = mysqli_query($con,$insert_query); 
 
 if($sql_execute){
-    echo "<script>alert('user added successfully')</script>";
+        echo "<script>alertMessage('user added successfully','success','./user_login.php');</script>";
+    
 }
 else{
-    echo "<script>alert('user not added')</script>";   
+        echo "<script>alertMessage(''user not added'','fail','./registration.php');</script>";
+
+
 }
 
 $select_cart_items = "select * from `cart` where ip_address='$user_ip'";

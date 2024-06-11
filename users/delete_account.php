@@ -4,8 +4,8 @@ if(isset($_POST['delete_account']))
 ?>
 <form action="" method="post" class="delete-box">
 
-    <input type="submit" value="delete account" class="btn" name="delete">
-    <input type="submit" value="not delete account" class="btn" name="not_delete">
+    <input type="submit" value="delete account" class="add-to-cart" name="delete">
+    <input type="submit" value="not delete account" class="see-more" name="not_delete">
 </form>
 
 
@@ -22,15 +22,14 @@ if(isset($_SESSION['username'])){
         if($result){
             session_unset();
             session_destroy();
-            echo "<Script>alert('account deleted')</Script>";
-            echo "<Script>window.open('../index.php','_Self')</Script>";
+        echo "<script>alertMessage('account deleted successfully','success','../index.php');</script>";
+
     }
 
     
 }
 if(isset($_POST['not_delete'])){
     echo "<Script>window.open('profile.php','_Self')</Script>";
-    
 }
 }
 

@@ -58,7 +58,7 @@ if(isset($_SESSION['username'])){
                             echo "<li class='not-login'> <i class='fas fa-user'></i></li>";
                         }
                         else{
-    echo "<li><img src='./users/users_image/$user_image' alt='$user_image'></li> ";
+    echo "<li><img src='./users_image/$user_image' alt='$user_image'></li> ";
 
 }
 
@@ -73,11 +73,11 @@ if(isset($_SESSION['username'])){
                         </li>";
 
 
-            echo "<li><a href='./users/user_login.php'><i class='fas fa-sign-in-alt'></i>login</a></li>";
+            echo "<li><a href='./user_login.php'><i class='fas fa-sign-in-alt'></i>login</a></li>";
         }
         else {
             echo "<li>".$_SESSION['username']."</li>";
-            echo "<li><a href='./users/logout.php'><i class='fas fa-sign-out-alt'></i>logout</a></li>";
+            echo "<li><a href='./logout.php'><i class='fas fa-sign-out-alt'></i>logout</a></li>";
             
         }
         ?>
@@ -153,38 +153,39 @@ if(isset($_SESSION['username'])){
                 <ul class="lists">
 
 
-                    <li class="list">
-                        <a href="profile.php"><span class="menu-icon"><i class="fas fa-home"></i></span><span
-                                class="menu-text">dashboard</span>
+                    <li class="link active">
+                        <a href="profile.php?dashboard"><span class="menu-icon"><i
+                                    class="fas fa-tachometer-alt"></i></span><span class="menu-text">dashboard</span>
                         </a>
                     </li>
 
 
-                    <li class="list">
+                    <li class="link">
                         <a href="profile.php?pending_order"><span class="menu-icon"><i
-                                    class="fas fa-home"></i></span><span class="menu-text">pending order</span>
+                                    class="fas fa-hourglass-half"></i></span><span class="menu-text">pending
+                                order</span>
 
                         </a>
                     </li>
-                    <li class="list">
+                    <li class="link">
                         <a href="profile.php?edit_account"><span class="menu-icon"><i
-                                    class="fas fa-home"></i></span><span class="menu-text">edit account</span>
+                                    class="fas fa-user-edit"></i></span><span class="menu-text">edit account</span>
 
                         </a>
                     </li>
-                    <li class="list">
-                        <a href="profile.php?my_orders"><span class="menu-icon"><i class="fas fa-home"></i></span><span
-                                class="menu-text"> my orders</span>
+                    <li class="link">
+                        <a href="profile.php?my_orders"><span class="menu-icon"><i
+                                    class="fas fa-shopping-bag"></i></span><span class="menu-text"> my orders</span>
 
                         </a>
                     </li>
-                    <li class="list">
+                    <li class="link">
                         <a href="profile.php?delete_account"><span class="menu-icon"><i
-                                    class="fas fa-home"></i></span><span class="menu-text">delete account</span>
+                                    class="fas fa-user-times"></i></span><span class="menu-text">delete account</span>
 
                         </a>
                     </li>
-                    <li class="list">
+                    <li class="link list">
                         <a href="logout.php"><span class="menu-icon"><i class="fas fa-home"></i></span><span
                                 class="menu-text">logout</span>
 
@@ -197,17 +198,23 @@ if(isset($_SESSION['username'])){
         <main>
 
             <?php 
-if (isset($_GET['pending_order'])) {
-include('pending_order.php');
-}
 if (isset($_GET['edit_account'])) {
-include('edit_account.php');
+    include('edit_account.php');
+}
+if (isset($_GET['pending_order'])) {
+    include('pending_order.php');
 }
 if (isset($_GET['my_orders'])) {
 include('my_orders.php');
 }
 if (isset($_GET['delete_account'])) {
 include('delete_account.php');
+}
+if (isset($_GET['dashboard'])) {
+    include('dashboard.php');
+}
+else  {
+    include('dashboard.php');
 }
 ?>
         </main>

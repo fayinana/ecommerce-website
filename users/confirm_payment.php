@@ -1,5 +1,6 @@
 <?php 
 include('../config/config.php');
+include('../functions/common_function.php');
 session_start();
 if (isset($_GET['order_id'])) {
     $order_id = $_GET['order_id'];
@@ -23,8 +24,8 @@ if(isset($_POST['confirm'])){
 
 $result = mysqli_query($con,$insert_query);
 if($result){
-    echo "<h1>success</h1>";
-    echo "<script>window.open('profile.php?my_orders','_self')</script>";
+            // echo "<script>alertMessage('payment done successfully','success','profile.php?my_orders');</script>";
+bottomNotification('payment done successfully','success','profile.php?my_orders') ;
 }
 
 $update_orders = "update `user_order` set order_status='complete' where order_id = $order_id ";
@@ -40,7 +41,9 @@ $result_order = mysqli_query($con,$update_orders);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>payment</title>
-    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/style.css?v=<?php echo filemtime('../css/style.css'); ?>">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="../css/new_style.css?v=<?php echo filemtime('../css/new_style.css'); ?>">
 </head>
 
 <body>
@@ -57,8 +60,8 @@ $result_order = mysqli_query($con,$update_orders);
             <label for="">invoice number</label>
             <select name="payment_mode" id="">
                 <option value="">select payment mode</option>
-                <option value="">tele birr</option>
-                <option value="">cbe birr</option>
+                <option value="telebirr">tele birr</option>
+                <option value="cbe birr">cbe birr</option>
             </select>
         </div>
 

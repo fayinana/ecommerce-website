@@ -1,7 +1,5 @@
  <h2 class="recent-order">all payments</h2>
-
  <?php 
-    
   $select_order = "SELECT * FROM `user_payment`";
   $result = mysqli_query($con,$select_order);
   $row_count = mysqli_num_rows($result);

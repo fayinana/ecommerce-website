@@ -140,52 +140,6 @@ if(isset( $_SESSION['username'])){
 ?>
 
 
-
-
-
-    <!-- <div class='cart-card'>
-    <div class='ratio-box'>
-                <img src='./admin/product_images/$product_image1' class='the-img' alt='$product_title'>
-            </div>
-            <div class='card-body'>
-                <div class='card-info'>
-                    <span class='product-name'>$product_title</span>
-                    <span class='card-price'>$$product_price</span>
-                </div>
-                <div class="icon">
-                    <input type="number">
-                </div>
-                <div class='card-buttons'>
-                    <a href='product_details.php?product_id=$product_id' class='see-more'>update</a>
-                    <a href='index.php' class='add-to-cart'>remove</a>
-                </div>
-            </div>
-        </div>
-
-        <div class='cart-card'>
-            <div class='ratio-box'>
-                <img src='./admin/product_images/$product_image1' class='the-img' alt='$product_title'>
-            </div>
-            <div class='card-body'>
-                <div class='card-info'>
-                    <span class='product-name'>$product_title</span>
-                    <span class='card-price'>$$product_price</span>
-                </div>
-                <div class='card-buttons'>
-                    <a href='product_details.php?product_id=$product_id' class='see-more'>see more</a>
-                    <a href='index.php' class='add-to-cart'>home</a>
-                </div>
-            </div>
-        </div> -->
-
-
-
-
-
-
-
-
-
     <form action="" method="post">
         <section class="all-cart">
             <?php 
@@ -259,6 +213,8 @@ if(isset( $_SESSION['username'])){
                         $update_cart = "UPDATE `cart` SET quantity='$quantities' WHERE product_id=$product_id AND ip_address='$get_ip_address'";
                         $result_quantity = mysqli_query($con, $update_cart);
                 $total_price=$total_price * $quantities;
+        bottomNotification('item updated successfully', 'success', 'cart.php');
+
             }
             
             ?>
@@ -310,7 +266,9 @@ if(isset( $_SESSION['username'])){
                     $delete_query = "DELETE FROM `cart` WHERE product_id=$remove_id" ;
                     $run_delete = mysqli_query($con,$delete_query);
                     if($run_delete){
-                        echo "<script>window.open('index.php','_self')</script>";
+        bottomNotification('item removed successfully', 'success', 'index.php');
+                        
+                        // echo "<script>window.open('index.php','_self')</script>";
                     }
                 }
             }

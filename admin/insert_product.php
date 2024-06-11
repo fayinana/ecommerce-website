@@ -20,9 +20,11 @@ if(isset($_POST["insert_product"])){
  $temp_image3 = $_FILES['product_image3']['tmp_name'];
 
 if ($product_title == '' or $product_description == '' or $product_keywords == '' or $product_categories == '' or $product_brands == '' or $product_price == '' or $product_image1 == '' or $product_image2 == '' or $product_image3 == '' ) {
-    echo "<script>alert('Fill all fields')</script>";
-    exit(); // Add this line to stop script execution
-}
+    // echo "<script>alert('Fill all fields')</script>";
+        bottomNotification('fill all place', 'fail', 'insert_products.php');
+
+    exit();
+    }
  else{
     move_uploaded_file($temp_image1,"./product_images/$product_image1");
     move_uploaded_file($temp_image2,"./product_images/$product_image2");
@@ -34,7 +36,9 @@ $insert_products = "INSERT INTO `products` (product_title, product_discription, 
 $result_query = mysqli_query($con,$insert_products);
 
 if($result_query){
-   echo "<script>alert('success')</script>" ;   
+//    echo "<script>alert('success')</script>" ;   
+        bottomNotification('product added successfully', 'success', 'insert_products.php');
+
 }
 
 else{

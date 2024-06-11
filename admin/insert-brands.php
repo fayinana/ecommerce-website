@@ -7,7 +7,9 @@ if(isset($_POST['insert_brand'])){
     $result_select = mysqli_query($con, $select_query);
     $number=mysqli_num_rows($result_select);
     if($number > 0){
-          echo "<script>alert('the brand is in side the data base')</script>";
+        //   echo "<script>alert('the brand is in side the data base')</script>";
+        bottomNotification('the brand is in side the data base', 'fail', 'index.php?insert-brands');
+
     }
 else{
     $insert_query = "INSERT INTO `brands` (brand_title) VALUES ('$brand_title')";
@@ -15,7 +17,9 @@ else{
     
     if($result){
         // success message
-        echo "<script>alert('added successfully')</script>";
+        // echo "<script>alert('added successfully')</script>";
+        bottomNotification('brand added successfully', 'success', 'index.php?insert-brands');
+
     } 
 }
 }
