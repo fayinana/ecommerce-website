@@ -1,21 +1,24 @@
-<?php 
+<?php
 include('./config/config.php');
-include('./functions/common_function.php');
-session_start();
-if(isset( $_SESSION['username'])){
 
-    $username = $_SESSION['username'];
-    $user_image = "select * from `user` where username='$username'";
-    $result_image = mysqli_query($con,$user_image);
-    $row_image = mysqli_fetch_array($result_image);
-    $user_image = $row_image['user_image'];
+if(isset($_GET['product_id'])){
     
-    
-}
+$product_id = $_GET['product_id'];
+
+$select_query = "SELECT * FROM `products` where `product_id` = $product_id ";
+$result_query = mysqli_query($con,$select_query);
+while ($row = mysqli_fetch_assoc($result_query)) {
+    $product_title = $row['product_title'];
+    $product_description = $row['product_discription'];
+    $product_keywords = $row['product_keywords'];
+    $product_categories = $row['category_id'];
+    $product_brands = $row['brand_id'];
+    $product_price = $row['product_price'];
+    $product_image1 = $row['product_image1'];
+    $product_image2 = $row['product_image2'];
+    $product_image3 = $row['product_image3'];
+}}
 ?>
-
-
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -23,7 +26,7 @@ if(isset( $_SESSION['username'])){
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>home</title>
+    <title>see more</title>
     <link rel="stylesheet" href="./css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <link rel="stylesheet" href="./css/new_style.css?v=<?php echo filemtime('./css/new_style.css'); ?>">
@@ -31,162 +34,28 @@ if(isset( $_SESSION['username'])){
 
 <body>
 
-    <!-- start of nav bar -->
-    <nav>
 
-        <section class="top-nav">
-
-            <article class="logo">
-                <img src="./logo.jpg" alt="">
-            </article>
-
-            <form action="search_product.php" method="get" class="search-form">
-                <input type="search" class="search" placeholder="Search a product..." name="search_data">
-                <input type="submit" value="Search" name="search_data_product">
-            </form>
-            <article class="nav-icon">
-                <span class="top-icons" class="profile-toggle" id="profile-toggle">
-                    <i class='fas fa-user'></i>
-
-                </span>
-
-
-                <div class="mini-profile">
-                    <ul>
-
-                        <?php
-                        
-                          if (!isset($_SESSION['username'])) {
-                            echo "<li class='not-login'> <i class='fas fa-user'></i></li>";
-                        }
-                        else{
-    echo "<li><img src='./users/users_image/$user_image' alt='$user_image'></li> ";
-
-}
-
-                              ?>
-
-
-                        <?php 
-        
-        if (!isset($_SESSION['username'])) {
-            echo " <li>
-                            <p>welcome gust</p>
-                        </li>";
-
-
-            echo "<li><a href='./users/user_login.php'><i class='fas fa-sign-in-alt'></i>login</a></li>";
-        }
-        else {
-            echo "<li>".$_SESSION['username']."</li>";
-            echo "<li><a href='./users/logout.php'><i class='fas fa-sign-out-alt'></i>logout</a></li>";
-            
-        }
-        ?>
-                    </ul>
-
-                </div>
-                <span class="top-icons">
-                    <a href="cart.php">
-                        <i class="fas fa-shopping-bag"></i>
-                        <span class="top-text">
-                            <?php 
-                            cart_item();
-                            ?>
-                        </span>
-                    </a>
-                </span>
-                <span class="price-top">
-                    <?php 
-                         total_cart_price()
-                        ?>
-                </span>
-            </article>
-        </section>
-        <section class="bottom-nav">
-
-            <ul class="nav-lists">
-                <li class="nav-list active">
-                    <a href="index.php">
-                        <span class="icon"><i class="fa fa-home"></i> </span>home
-                    </a>
-                </li>
-                <li class="nav-list">
-                    <a href="display_all.php">
-                        <span class="icon"><i class="fas fa-shopping-bag"></i> </span>products
-                    </a>
-                </li>
-                <?php 
-                     if (!isset($_SESSION['username'])) {
-          echo "<li class='nav-list'><a href='users/registration.php'>
-                        <span class='icon'><i fas fa-user-plus></i> </span>
-                        register</a></li>";
-        }
-        else {
-             echo "<li class='nav-list'><a href='users/profile.php'>
-                       <span class='icon'><i class='fas fa-user'></i> </span>my account 
-                        </a></li>";
-        }
-                    ?>
-                <li class="nav-list"><a href="">
-                        <span class="icon"><i class="fas fa-envelope"></i> </span>contact
-                    </a></li>
-
-            </ul>
-        </section>
-    </nav>
-    <?php                             
-    cart()                     
-?>
-
-    <!-- ERROR DISPLAY -->
-    <main class="main-section">
-        <!-- products -->
-        <!-- </section> -->
-
-        <section class="main-menu">
-            <div class="profile">
+    <section class="see-more-container">
+        <article class="see-more-img-container">
+            <div class="main-img">
+                <img id="main-img" src="./admin/product_images/<?php echo $product_image1; ?>" alt="">
             </div>
-            <div class="category">
-                <h2 class="title">category</h2>
-                <ul class="category-list">
-                    <?php 
-                get_category()
-                ?>
-                </ul>
+            <div class="other-img-container">
+                <div class="other-img"> <img src="./admin/product_images/<?php echo $product_image1; ?>" alt=""></div>
+                <div class="other-img"> <img src="./admin/product_images/<?php echo $product_image2; ?>" alt=""></div>
+                <div class="other-img"> <img src="./admin/product_images/<?php echo $product_image3; ?>" alt=""></div>
             </div>
-            <div class="factory">
-                <h2 class="title">brand</h2>
-                <ul class="category-list">
-                    <?php 
-                    get_brands()
-                ?>
-                </ul>
-            </div>
-        </section>
+        </article>
 
-        <section class="products">
-            <?php 
-            getproducts();
-            get_filtered_product_category();
-            get_filtered_product_brand();
-?>
-        </section>
-        <!-- end of side bar -->
-
-    </main>
-    <!-- footer -->
-
-    <?php 
-
-include('./config/footer.php')
-
-?>
-    <!-- <?php 
-                $ip = getRealIPAddr();
-                echo 'value : '.$ip;
-                ?> -->
-
+        <article class="see-more-text-container">
+            <?php if(isset($product_id)): ?>
+            <h2><?php echo $product_title; ?></h2>
+            <p><?php echo $product_keywords; ?></p>
+            <p><?php echo $product_description; ?></p>
+            <?php else: ?>
+            <?php endif; ?>
+        </article>
+    </section>
     <script src="./js/script.js?v=<?php echo filemtime('./js/script.js'); ?>"></script>
 </body>
 

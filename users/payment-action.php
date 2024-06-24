@@ -85,4 +85,24 @@ $result_pending_orders = mysqli_query($con,$insert_pending_orders);
 $empty_cart = "DELETE FROM `cart` WHERE ip_address = '$get_ip_address'";
 $result_delete = mysqli_query($con, $empty_cart);
 
+
 ?>
+
+
+
+<form method="POST" action="https://api.chapa.co/v1/hosted/pay">
+    <input type="hidden" name="public_key" value="CHAPUBK_TEST-ReP9r18N23sJpk65wFbxaxKmOKTUFNGE" />
+    <input type="hidden" name="tx_ref" value="negade-tx-1234567" />
+    <input type="hidden" name="amount" value="100" />
+    <input type="hidden" name="currency" value="ETB" />
+    <input type="email" name="email" value="ananiyafekede@gmail.com" />
+    <input type="text" name="first_name" value="Israel" />
+    <input type="text" name="last_name" value="Goytom" />
+    <input type="text" name="title" value="Let us do this" />
+    <input type="text" name="description" value="Paying with Confidence with cha" />
+    <input type="hidden" name="logo" value="https://chapa.link/asset/images/chapa_swirl.svg" />
+    <input type="hidden" name="callback_url" value="https://example.com/callbackurl" />
+    <input type="hidden" name="return_url" value="https://example.com/returnurl" />
+    <input type="hidden" name="meta[title]" value="test" />
+    <button type="submit">Pay Now</button>
+</form>

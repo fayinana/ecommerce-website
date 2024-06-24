@@ -21,8 +21,10 @@ while ($row = mysqli_fetch_assoc($result)) {
          <tr>
              <td><?php echo $number?></td>
              <td><?php echo $category_title?></td>
-             <td class="ditale"><a href='index.php?edit_category=<?php echo $category_id?> '>edit</a></td>
-             <td class="discarded"><a href='index.php?delete_category=<?php echo $category_id ?>'>delete</a></td>
+             <td><a class="ditale" href='index.php?edit_category=<?php echo $category_id?> '><i class="fas fa-edit"></i>
+                 </a></td>
+             <td><a class="discarded" href='index.php?delete_category=<?php echo $category_id ?>'> <i
+                         class="fas fa-trash"></i></a></td>
          </tr>
 
          <?php

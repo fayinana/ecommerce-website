@@ -39,7 +39,7 @@ echo "
      <!-- <td> <img src="../users/users_image/<?php echo $user_image ?>" alt="<?php echo $user_image ?>"></td> -->
      <td><?php echo  $user_address ?></td>
      <td><?php echo  $user_mobile ?></td>
-     <td class="discarded"><a href='index.php?delete_users=<?php echo $user_id ?>'>delete</a></td>
+     <!-- <td class="discarded"><a href='index.php?delete_users=<?php echo $user_id ?>'>delete</a></td> -->
 
 
  </tr>

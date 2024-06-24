@@ -194,16 +194,7 @@ if(isset( $_SESSION['username'])){
                         <input type="submit" value="remove" class="see-more" name="remove_cart">
                     </div>
                 </div>
-                <?php 
-                     $get_ip_address = getRealIPAddr();
-                    if(isset($_POST['update_cart'])){
-                $quantities = $_POST['quantity'];
-                $update_cart = "UPDATE `cart` SET quantity='$quantities' WHERE product_id=$product_id AND ip_address='$get_ip_address'";
-                $result_quantity = mysqli_query($con, $update_cart);
-                $total_price=$total_price * $quantities;
-            }
-                    
-                    ?>
+
             </div>
 
             <?php 
@@ -212,7 +203,8 @@ if(isset( $_SESSION['username'])){
                         $quantities = $_POST['quantity'];
                         $update_cart = "UPDATE `cart` SET quantity='$quantities' WHERE product_id=$product_id AND ip_address='$get_ip_address'";
                         $result_quantity = mysqli_query($con, $update_cart);
-                $total_price=$total_price * $quantities;
+                        
+                        
         bottomNotification('item updated successfully', 'success', 'cart.php');
 
             }
@@ -238,24 +230,30 @@ if(isset( $_SESSION['username'])){
                     $cart_query = "SELECT * FROM `cart` WHERE ip_address='$get_ip_address'";
                     $result = mysqli_query($con,$cart_query);
                     $result_count = mysqli_num_rows($result);
+                  
                     if($result_count > 0){
                         echo "
                         <div class='out-put'>
-                        <p class='total-price'>total : <span>$total_price</span> </p>
-                        <a href='index.php' class='see-more'>continue shopping</a>
-                        <a href='./users/checkout.php' class='see-more'>check out</a>
-                        
-                        ";}
-                        else {
-                            echo "
-                            
-                            <a href='index.php' class='see-more align'>continue shopping</a>
-                            </div>
-                            ";
-    
+                        <p class='total-price'>total :  "?>
 
-    }
-    ?>
+        <?php total_cart_price() ?>
+        <?php
+        echo "
+        <span></span> </p>
+        <a href='index.php' class='see-more'>continue shopping</a>
+        <a href='./users/checkout.php' class='see-more'>check out</a>
+
+        ";}
+        else {
+        echo "
+
+        <a href='index.php' class='see-more align'>continue shopping</a>
+        </div>
+        ";
+
+
+        }
+        ?>
     </form>
     </div>
     <?php  

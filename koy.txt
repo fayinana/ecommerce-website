@@ -1,0 +1,43 @@
+<?php 
+$API_KEY = 'CHASECK_TEST-hCZRifTa0PTpavURJqPMr1XxXLE7Zvc6';
+$chapa = new Chapa($API_KEY);
+
+$postData = new PostData();
+$postData->amount('100')
+    ->currency('ETB')
+    ->email('abebe@bikila.com')
+    ->firstname('Abebe')
+    ->lastname('Bikila')
+    ->transactionRef('transaction-ref')
+    ->callbackUrl('https://google.com')
+    ->customizations(
+        array(
+            'customization[title]' => 'I love e-commerce',
+            'customization[description]' => 'It is time to pay'
+        ) 
+    );
+$response1 = $chapa->initialize($postData);
+    echo "$response1";
+
+?>
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>payment</title>
+    <link rel="stylesheet" href="../css/style.css?v=<?php echo filemtime('../css/style.css'); ?>">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="../css/new_style.css?v=<?php echo filemtime('../css/new_style.css'); ?>">
+</head>
+
+<body>
+    <form action="./log-in-action.php" class="form" method="post" enctype="multipart/form-data">
+        <h6 class="recent-order">choose a payment</h6>
+    </form>
+</body>
+
+</html>

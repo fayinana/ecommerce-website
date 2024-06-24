@@ -215,7 +215,8 @@ session_start();
         <!--price  -->
     </form>
 
-    <script src="../js/script.js"></script>
+    <script defer src="../js/script.js?v=<?php echo filemtime('../js/script.js'); ?>"></script>
+
 </body>
 
 </html>

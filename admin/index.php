@@ -12,7 +12,7 @@ session_start();
 //   echo "<scrip>window.open('./index.php','_self')</scrip>";
     
 // }
-?>
+// ?>
 
 
 <!DOCTYPE html>
@@ -53,16 +53,15 @@ session_start();
         
         if (!isset($_SESSION['admin_name'])) {
             echo " <li>
-                            <p>welcome admin</p>
+                            welcome admin
                         </li>";
-
 
             echo "<li><a href='./admin_login.php'><i class='fas fa-sign-in-alt'></i>login</a></li>";
         }
         else {
             echo "<li>".$_SESSION['admin_name']."</li>";
             echo "<li><a href='./admin_logout.php'><i class='fas fa-sign-out-alt'></i>logout</a></li>";
-            echo "<script>window.open(./admin_login.php)</script>";
+            echo "<script>window.open('./index.php')</script>";
             
         }
         ?>
@@ -111,43 +110,84 @@ session_start();
         </aside>
 
         <section class="contents">
+            <?php
 
-            <article class="dash-board">
-                <h2 class="recent-order">Analytics</h2>
-                <div class="analytics">
-                    <section class="analytic">
-                        <div class="info">
-                            <p class="">total products</p>
-                            <h1>$65,024</h1>
-                        </div>
-                        <div class="graph1"> <i class="fas fa-box-open"></i></div>
-                    </section>
-                    <section class="analytic">
-                        <div class="info">
-                            <p class="">total order</p>
-                            <h1>$14,1147</h1>
-                        </div>
+// Get the total number of products
+$total_products_query = "SELECT COUNT(*) as total_products FROM `products`";
+$total_products_result = mysqli_query($con, $total_products_query);
+if ($total_products_result) {
+    $total_products_row = mysqli_fetch_assoc($total_products_result);
+    $total_products = $total_products_row['total_products'];
+} else {
+    $total_products = 0;
+}
 
-                        <div class="graph2"><i class="fas fa-shopping-cart"></i></div>
-                    </section>
-                    <section class="analytic">
-                        <div class="info">
-                            <p class="">total users</p>
-                            <h1>$14,1147</h1>
-                        </div>
-                        <div class="graph3"><i class="fas fa-users"></i></div>
-                    </section>
-                    <section class="analytic">
-                        <div class="info">
-                            <p class="">Total Revenue</p>
-                            <h1>$14,1147</h1>
-                        </div>
+// Get the total number of orders
+$total_orders_query = "SELECT COUNT(*) as total_orders FROM `order_pending`";
+$total_orders_result = mysqli_query($con, $total_orders_query);
+if ($total_orders_result) {
+    $total_orders_row = mysqli_fetch_assoc($total_orders_result);
+    $total_orders = $total_orders_row['total_orders'];
+} else {
+    $total_orders = 0;
+}
 
-                        <div class="graph4"> <i class="fas fa-chart-line"></i></div>
-                    </section>
-                </div>
+// Get the total number of users
+$total_users_query = "SELECT COUNT(*) as total_users FROM `user`";
+$total_users_result = mysqli_query($con, $total_users_query);
+if ($total_users_result) {
+    $total_users_row = mysqli_fetch_assoc($total_users_result);
+    $total_users = $total_users_row['total_users'];
+} else {
+    $total_users = 0;
+}
 
-            </article>
+// Calculate the total revenue
+$total_revenue_query = "SELECT SUM(product_price * quantity) as total_revenue FROM `order_pending`";
+$total_revenue_result = mysqli_query($con, $total_revenue_query);
+if ($total_revenue_result) {
+    $total_revenue_row = mysqli_fetch_assoc($total_revenue_result);
+    $total_revenue = $total_revenue_row['total_revenue'];
+} else {
+    $total_revenue = 0;
+}
+
+// Display the HTML with the analytics information
+echo "<article class='dash-board'>
+    <h2 class='recent-order'>Analytics</h2>
+    <div class='analytics'>
+        <section class='analytic'>
+            <div class='info'>
+                <p class=''>total products</p>
+                <h1>$total_products</h1>
+            </div>
+            <div class='graph1'><i class='fas fa-box-open'></i></div>
+        </section>
+        <section class='analytic'>
+            <div class='info'>
+                <p class=''>total order</p>
+                <h1>$total_orders</h1>
+            </div>
+            <div class='graph2'><i class='fas fa-shopping-cart'></i></div>
+        </section>
+        <section class='analytic'>
+            <div class='info'>
+                <p class=''>total users</p>
+                <h1>$total_users</h1>
+            </div>
+            <div class='graph3'><i class='fas fa-users'></i></div>
+        </section>
+        <section class='analytic'>
+            <div class='info'>
+                <p class=''>Total Revenue</p>
+                <h1>$total_revenue</h1>
+            </div>
+            <div class='graph4'><i class='fas fa-chart-line'></i></div>
+        </section>
+    </div>
+</article>";
+?>
+
             <article>
 
                 <?php 

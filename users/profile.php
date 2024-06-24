@@ -236,7 +236,7 @@ else  {
         else {
             echo "<li class='not-login'> <i class='fas fa-user'></i></li>";
             echo "<li>gust</li>";
-            echo "<li><a href='./users/logout.php'><i class='fas fa-sign-out-alt'></i>logout</a></li>";
+            echo "<li><a href='logout.php'><i class='fas fa-sign-out-alt'></i>logout</a></li>";
             
         }
         ?>

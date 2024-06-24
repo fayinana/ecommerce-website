@@ -17,7 +17,7 @@ echo "
             <th>total product</th>
             <th>order date</th>
             <th>status</th>
-            <th>delete</th>
+           
         </tr>
     </thead>
     <tbody>
@@ -37,8 +37,13 @@ echo "
      <td><?php echo $invoice_number ?></td>
      <td><?php echo $total_product ?></td>
      <td><?php echo $order_date ?></td>
-     <td><?php echo $order_status ?></td>
-     <td class="discarded"><a href="">delete</a></td>
+     <?php   if($order_status == 'complete'){
+            echo "<td class = 'accepted'>paid</td>";
+        } else {
+            echo "<td class='pending'><a href='confirm_payment.php?order_id=$order_id'>confirm</a></td>";
+        }
+        echo "</tr>"; ?>
+     <!-- <td class="discarded"><a href="">delete</a></td> -->
  </tr>
  <?php
       $number++;

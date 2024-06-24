@@ -40,8 +40,10 @@
             echo $rows_count;
             ?>
             </td>
-            <td class=" ditale"><a href="index.php?edit_products=<?php echo $product_id ?>">edit</a></td>
-            <td class="discarded"><a href="index.php?delete_product=<?php echo $product_id ?>">delete</a></td>
+            <td><a class=" ditale" href="index.php?edit_products=<?php echo $product_id ?>"><i
+                        class="fas fa-edit"></i></a></td>
+            <td><a class="discarded" href="index.php?delete_product=<?php echo $product_id ?>"><i
+                        class="fas fa-trash"></i></a></td>
         </tr>
         <?php 
   

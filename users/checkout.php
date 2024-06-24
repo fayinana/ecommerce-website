@@ -11,6 +11,7 @@ if(isset( $_SESSION['username'])){
     $user_image = $row_image['user_image'];
 }
               ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -30,7 +31,7 @@ if(isset( $_SESSION['username'])){
             <article class="logo">
                 <img src="../logo.jpg" alt="">
             </article>
-            <form action="search_product.php" method="get" class="search-form">
+            <form action="../search_product.php" method="get" class="search-form">
                 <input type="search" class="search" placeholder="Search a product..." name="search_data">
                 <input type="submit" value="Search" name="search_data_product">
             </form>
@@ -110,10 +111,10 @@ if(isset( $_SESSION['username'])){
     <main class="main-section">
         <?php 
 if(!isset($_SESSION['username'])){
-    include('user_login.php');
+    header('location: user_login.php');
 }
 else{
-    include('payment.php');
+    header('location: payment.php');
 }
 ?>
     </main>

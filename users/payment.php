@@ -4,21 +4,17 @@ include('../config/config.php');
 
 @session_start();
 ?>
-
 <!DOCTYPE html>
-<html lang="en">
+<html>
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>payment</title>
+    <title>Payment Form</title>
     <link rel="stylesheet" href="../css/style.css?v=<?php echo filemtime('../css/style.css'); ?>">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <link rel="stylesheet" href="../css/new_style.css?v=<?php echo filemtime('../css/new_style.css'); ?>">
 </head>
 
 <body>
-
     <?php 
 
 $user_ip = getRealIPAddr();
@@ -32,20 +28,9 @@ $user_id = $run_query['user_id'];
 
 
     <div class="payment-methods form">
-        <a class=" add-to-cart" href="order.php?user_id=<?php echo $user_id ?>">
-            offline
-        </a>
-        <a class="see-more" href="order.php?user_id=<?php echo $user_id ?>">
-            telebirr
-        </a>
-        <a class="see-more" href="order.php?user_id=<?php echo $user_id ?>">
-            cbebirr
-        </a>
-        <a class="see-more" href="order.php?user_id=<?php echo $user_id ?>">
-            chapa pay
-        </a>
-        <a class="see-more" href="order.php?user_id=<?php echo $user_id ?>">
-            other
+
+        <a href="order.php?user_id=<?php echo $user_id ?>" class="add-to-cart">
+            <p>offline</p>
         </a>
     </div>
 </body>

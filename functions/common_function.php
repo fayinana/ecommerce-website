@@ -358,27 +358,29 @@ function cart_item(){
 
 
 
-
-
-        function total_cart_price(){
+function total_cart_price() {
     global $con;
     $get_ip_address = getRealIPAddr();
     $total_price = 0;
-    $cart_query = "select * from `cart` where ip_address='$get_ip_address'";
-    $result = mysqli_query($con,$cart_query);
-    while ($row=mysqli_fetch_array($result)) {
-        $product_id = $row['product_id'];
-        $select_products = "select * from `products` where product_id='$product_id'";
-        $result_product = mysqli_query($con,$select_products);
-        while ($row_product_price = mysqli_fetch_array($result_product)) {
-        $row_product_price = array($row_product_price['product_price']);
-        $product_values= array_sum($row_product_price);
-        $total_price+=$product_values;
-        }
-    }
-    echo$total_price;
-}
 
+    $cart_query = "SELECT * FROM `cart` WHERE ip_address='$get_ip_address'";
+    $result = mysqli_query($con, $cart_query);
+
+    while ($row = mysqli_fetch_array($result)) {
+        $product_id = $row['product_id'];
+        $product_quantity = $row['quantity'];
+
+        $select_products = "SELECT * FROM `products` WHERE product_id='$product_id'";
+        $result_product = mysqli_query($con, $select_products);
+        $row_product = mysqli_fetch_assoc($result_product);
+
+        $product_price = $row_product['product_price'];
+        $sub_total = $product_price * $product_quantity;
+        $total_price += $sub_total;
+    }
+
+    echo $total_price;
+}
 
 
 
@@ -418,35 +420,47 @@ if(isset($_SESSION['username'])){
 
 function  get_dashboard(){
     
+    global $con; // Assuming you have a database connection established
     if (!isset($_GET['edit_account']) && !isset($_GET['my_orders']) && !isset($_GET['delete_account']) && !isset($_GET['confirm_payment']) && !isset($_GET['pending_order'])) {
-        
+
+// Get the current user's information
+$username = $_SESSION['username'];
+$get_user = "SELECT * FROM `user` WHERE username = '$username'";
+$result = mysqli_query($con, $get_user);
+$row_fetch = mysqli_fetch_array($result);
+$user_id = $row_fetch['user_id'];
+
+// Get the total number of orders for the current user
+$total_orders_query = "SELECT COUNT(*) as total_orders FROM `user_order` WHERE user_id = $user_id";
+$total_orders_result = mysqli_query($con, $total_orders_query);
+$total_orders_row = mysqli_fetch_assoc($total_orders_result);
+$total_orders = $total_orders_row['total_orders'];
+
+// Get the total number of pending orders for the current user
+$pending_orders_query = "SELECT * FROM `user_order` WHERE user_id = $user_id AND order_status = 'pending'";
+            $result_orders_query = mysqli_query($con, $pending_orders_query);
+            $row_count = mysqli_num_rows($result_orders_query);
+
+// Display the HTML with the order counts
 echo "<h2>Analytics</h2>
 <section class='main-task'>
     <div class='analytics_dashboard'>
         <section class='analytic_dashboard'>
             <div class='info'>
-                <p class=''>total sales</p>
-                <h1>$65,024</h1>
-                </div>
-                <div class='graph1'>+77%</div>
-                </section>
-                <section class='analytic_dashboard'>
-                <div class='info'>
-                <p class=''>total sales</p>
-                <h1>$24,981</h1>
-                </div>
-                <div class='graph2'>+95%</div>
-                </section>
-                <section class='analytic_dashboard'>
-                <div class='info'>
-                <p class=''>total sales</p>
-                <h1>$14,1147</h1>
-                </div>
-                <div class=' graph3'>+81%
-                </div>
-                </section>
-    </div>" ;
-    }
+                <p class=''>order</p>
+                <h1>$total_orders</h1>
+            </div>
+            <div class='graph1'><i class='fa-solid fa-cart-shopping'></i></div>
+        </section>
+        <section class='analytic_dashboard'>
+            <div class='info'>
+                <p class=''>pending order</p>
+                <h1>$row_count</h1>
+            </div>
+            <div class='graph2'><i class='fa-solid fa-print'></i></div>
+        </section>
+    </div>";
+}
 }
 
 

@@ -35,7 +35,7 @@ echo "
      <td><?php echo $amount ?></td>
      <td><?php echo $payment_mode ?></td>
      <td><?php echo $order_date ?></td>
-     <td class="discarded"><a href="">delete</a></td>
+     <!-- <td class="discarded"><a href="">delete</a></td> -->
  </tr>
  <?php
       $number++;
