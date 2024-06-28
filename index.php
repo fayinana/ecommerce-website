@@ -1,7 +1,7 @@
 <?php 
 include('./config/config.php');
 include('./functions/common_function.php');
-session_start();
+session_start(); //Session Starting
 if(isset($_SESSION['username'])){
 
     $username = $_SESSION['username'];
