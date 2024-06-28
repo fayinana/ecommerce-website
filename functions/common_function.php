@@ -1,7 +1,7 @@
 <?php
 
 // include('./js/script.js'); 
-function BottomNotification($message, $type, $destination) {
+function BottomNotification($message, $type, $destination) {// This Code is Common for All Fies 
     $iconClass = ($type === "fail") ? "fa fa-exclamation-circle" : "fa fa-check-circle";
     $notificationClass = ($type === "fail") ? "small-notification fail" : "small-notification success";
     $borderClass = ($type === "fail") ? "bottom-border fail" : "bottom-border success";
