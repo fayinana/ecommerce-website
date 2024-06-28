@@ -1,3 +1,3 @@
 <?php
-get_dashboard();
+get_dashboard();// This is Dashboard 
                 ?>
