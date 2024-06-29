@@ -67,10 +67,10 @@ To get started with the project, follow these steps:
    The default admin credentials can be found in the database after importing store.sql.
    You may want to update the admin username and password for security.
 
-## Usage
- -Register as a new user or log in using existing credentials.
- -Browse products, add items to your cart, and proceed to checkout.
- -Admins can log in to the admin panel to manage products and orders.
+## Usage:
+-Register as a new user or log in using existing credentials.
+-Browse products, add items to your cart, and proceed to checkout.
+-Admins can log in to the admin panel to manage products and orders.
 
 
 ## Contributing
