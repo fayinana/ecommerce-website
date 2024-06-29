@@ -68,8 +68,8 @@ To get started with the project, follow these steps:
    You may want to update the admin username and password for security.
 
 ## Usage:
--Register as a new user or log in using existing credentials.
--Browse products, add items to your cart, and proceed to checkout.
+-Register as a new user or log in using existing credentials.<br/>
+-Browse products, add items to your cart, and proceed to checkout.<br/>
 -Admins can log in to the admin panel to manage products and orders.
 
 
